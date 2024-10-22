@@ -20,6 +20,8 @@
                                     <h5 class="card-title">Producto 1</h5>
                                     <p class="card-text">Descripción breve del producto 1.</p>
                                     <a href="#" class="btn btn-primary">Comprar</a>
+                                    
+                                   
                                 </div>
                             </div>
                         </div>
@@ -64,6 +66,7 @@
                                     <h5 class="card-title">Producto 5</h5>
                                     <p class="card-text">Descripción breve del producto 5.</p>
                                     <a href="#" class="btn btn-primary">Comprar</a>
+                                    <asp:Button ID="btnComprar" Text="Comprar" runat="server" />
                                 </div>
                             </div>
                         </div>
