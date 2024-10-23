@@ -11,16 +11,16 @@
 
 
             <div class="mb-3">
-                <label for="email" class="form-label">Correo Electrónico</label>
-                <input type="email" class="form-control" id="email" placeholder="Ingresa tu correo" required>
+                <label for="email" class="form-label">Correo Electrónico</label>    
+                <asp:TextBox runat="server" CssClass="form-control" ID="txtEmail" type="email" />
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Contraseña</label>
-                <input type="password" class="form-control" id="password" placeholder="Ingresa tu contraseña" required>
+                <asp:TextBox runat="server" CssClass="form-control" ID="txtPassword" type="password" />
             </div>
-            <button type="submit" class="btn btn-primary w-100">Iniciar Sesión</button>
+            <asp:Button Text="Iniciar Sesión" CssClass="btn btn-primary w-100" ID="btnIniciarSesion" OnClick="btnIniciarSesion_Click" runat="server" />
             <div class="mt-3 text-center">
-                <p>¿No tienes una cuenta? <a href="registro.html">Regístrate aquí</a></p>
+                <p>¿No tienes una cuenta? <a href="/registro.aspx">Regístrate aquí</a></p>
             </div>
         </div>
     </div>

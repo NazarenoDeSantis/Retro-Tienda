@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <div class="container mt-5">
-        <h1 class="text-center mb-4">Merchandising</h1>
+        <h1 class="text-center mb-4">Regaleria</h1>
         <div class="row row-cols-1 row-cols-md-3 g-4">
             <!-- Producto 1 -->
             <div class="col">
