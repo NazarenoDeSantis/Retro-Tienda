@@ -14,8 +14,8 @@
                     <div class="card-body">
                         <h5 class="card-title">Producto 1</h5>
                         <p class="card-text">Descripción breve del producto 1. Es un excelente artículo.</p>
-                        <a href="#" class="btn btn-primary">Ver más</a>
-                        <a href="#" class="btn btn-primary">Comprar</a>
+                        <asp:Button Text="Ver más" runat="server" CssClass="btn btn-primary" ID="btnVerMasIndumentaria" OnClick="btnVerMasIndumentaria_Click"  />
+                        <asp:Button Text="Comprar" runat="server" ID="btnComprarIndumentaria" CssClass="btn btn-primary" OnClick="btnComprarIndumentaria_Click"  />
                     </div>
                 </div>
             </div>
@@ -26,8 +26,8 @@
                     <div class="card-body">
                         <h5 class="card-title">Producto 2</h5>
                         <p class="card-text">Descripción breve del producto 2. Producto de alta calidad.</p>
-                        <a href="#" class="btn btn-primary">Ver más</a>
-                        <a href="#" class="btn btn-primary">Comprar</a>
+                        <asp:Button Text="Ver más" runat="server" CssClass="btn btn-primary" ID="btnVerMasIndumentaria2" OnClick="btnVerMasIndumentaria2_Click"  />
+                        <asp:Button Text="Comprar" runat="server" ID="btnComprarIndumentaria2" CssClass="btn btn-primary" OnClick="btnComprarIndumentaria2_Click" />
                     </div>
                 </div>
             </div>
@@ -38,8 +38,8 @@
                     <div class="card-body">
                         <h5 class="card-title">Producto 3</h5>
                         <p class="card-text">Descripción breve del producto 3. Ideal para tu colección.</p>
-                        <a href="#" class="btn btn-primary">Ver más</a>
-                        <a href="#" class="btn btn-primary">Comprar</a>
+                        <asp:Button Text="Ver más" runat="server" CssClass="btn btn-primary" ID="btnVerMasIndumentaria3" OnClick="btnVerMasIndumentaria3_Click"  />
+                        <asp:Button Text="Comprar" runat="server" ID="btnComprarIndumentaria3" CssClass="btn btn-primary" OnClick="btnComprarIndumentaria3_Click"  />
                     </div>
                 </div>
             </div>
@@ -50,8 +50,8 @@
                     <div class="card-body">
                         <h5 class="card-title">Producto 4</h5>
                         <p class="card-text">Descripción breve del producto 4. Innovador y moderno.</p>
-                        <a href="#" class="btn btn-primary">Ver más</a>
-                        <a href="#" class="btn btn-primary">Comprar</a>
+                        <asp:Button Text="Ver más" runat="server" CssClass="btn btn-primary" ID="btnVerMasIndumentaria4" OnClick="btnVerMasIndumentaria4_Click"  />
+                        <asp:Button Text="Comprar" runat="server" ID="btnComprarIndumentaria4" CssClass="btn btn-primary" OnClick="btnComprarIndumentaria4_Click"  />
                     </div>
                 </div>
             </div>
@@ -62,8 +62,8 @@
                     <div class="card-body">
                         <h5 class="card-title">Producto 5</h5>
                         <p class="card-text">Descripción breve del producto 5. Muy solicitado por nuestros clientes.</p>
-                        <a href="#" class="btn btn-primary">Ver más</a>
-                        <a href="#" class="btn btn-primary">Comprar</a>
+                        <asp:Button Text="Ver más" runat="server" CssClass="btn btn-primary" ID="btnVerMasIndumentaria5" OnClick="btnVerMasIndumentaria5_Click"  />
+                        <asp:Button Text="Comprar" runat="server" ID="btnComprarIndumentaria5" CssClass="btn btn-primary" OnClick="btnComprarIndumentaria5_Click" />
                     </div>
                 </div>
             </div>
@@ -74,8 +74,8 @@
                     <div class="card-body">
                         <h5 class="card-title">Producto 6</h5>
                         <p class="card-text">Descripción breve del producto 6. Ideal para tu hogar.</p>
-                        <a href="#" class="btn btn-primary">Ver más</a>
-                        <a href="#" class="btn btn-primary">Comprar</a>
+                        <asp:Button Text="Ver más" runat="server" CssClass="btn btn-primary" ID="btnVerMasIndumentaria6" OnClick="btnVerMasIndumentaria6_Click"  />
+                        <asp:Button Text="Comprar" runat="server" ID="btnComprarIndumentaria6" CssClass="btn btn-primary" OnClick="btnComprarIndumentaria6_Click"  />
                     </div>
                 </div>
             </div>
@@ -86,8 +86,8 @@
                     <div class="card-body">
                         <h5 class="card-title">Producto 7</h5>
                         <p class="card-text">Descripción breve del producto 7. Excelente calidad y precio.</p>
-                        <a href="#" class="btn btn-primary">Ver más</a>
-                        <a href="#" class="btn btn-primary">Comprar</a>
+                        <asp:Button Text="Ver más" runat="server" CssClass="btn btn-primary" ID="btnVerMasIndumentaria7" OnClick="btnVerMasIndumentaria7_Click"  />
+                        <asp:Button Text="Comprar" runat="server" ID="btnComprarIndumentaria7" CssClass="btn btn-primary" OnClick="btnComprarIndumentaria7_Click"  />
                     </div>
                 </div>
             </div>
@@ -98,8 +98,8 @@
                     <div class="card-body">
                         <h5 class="card-title">Producto 8</h5>
                         <p class="card-text">Descripción breve del producto 8. Diseño único.</p>
-                        <a href="#" class="btn btn-primary">Ver más</a>
-                        <a href="#" class="btn btn-primary">Comprar</a>
+                        <asp:Button Text="Ver más" runat="server" CssClass="btn btn-primary" ID="btnVerMasIndumentaria8" OnClick="btnVerMasIndumentaria8_Click"  />
+                        <asp:Button Text="Comprar" runat="server" ID="btnComprarIndumentaria8" CssClass="btn btn-primary" OnClick="btnComprarIndumentaria8_Click"  />
                     </div>
                 </div>
             </div>
@@ -110,8 +110,8 @@
                     <div class="card-body">
                         <h5 class="card-title">Producto 9</h5>
                         <p class="card-text">Descripción breve del producto 9. Ideal para cualquier ocasión.</p>
-                        <a href="#" class="btn btn-primary">Ver más</a>
-                        <a href="#" class="btn btn-primary">Comprar</a>
+                        <asp:Button Text="Ver más" runat="server" CssClass="btn btn-primary" ID="btnVerMasIndumentaria9" OnClick="btnVerMasIndumentaria9_Click"  />
+                        <asp:Button Text="Comprar" runat="server" ID="btnComprarIndumentaria9" CssClass="btn btn-primary" OnClick="btnComprarIndumentaria9_Click"  />
                     </div>
                 </div>
             </div>
@@ -122,8 +122,8 @@
                     <div class="card-body">
                         <h5 class="card-title">Producto 10</h5>
                         <p class="card-text">Descripción breve del producto 10. No te lo puedes perder.</p>
-                        <a href="#" class="btn btn-primary">Ver más</a>
-                        <a href="#" class="btn btn-primary">Comprar</a>
+                        <asp:Button Text="Ver más" runat="server" CssClass="btn btn-primary" ID="btnVerMasIndumentaria10" OnClick="btnVerMasIndumentaria10_Click"  />
+                        <asp:Button Text="Comprar" runat="server" ID="btnComprarIndumentaria10" CssClass="btn btn-primary" OnClick="btnComprarIndumentaria10_Click"  />
                     </div>
                 </div>
             </div>
@@ -134,8 +134,8 @@
                     <div class="card-body">
                         <h5 class="card-title">Producto 11</h5>
                         <p class="card-text">Descripción breve del producto 11. Aumenta tu productividad.</p>
-                        <a href="#" class="btn btn-primary">Ver más</a>
-                        <a href="#" class="btn btn-primary">Comprar</a>
+                        <asp:Button Text="Ver más" runat="server" CssClass="btn btn-primary" ID="btnVerMasIndumentaria11" OnClick="btnVerMasIndumentaria11_Click"  />
+                        <asp:Button Text="Comprar" runat="server" ID="btnComprarIndumentaria11" CssClass="btn btn-primary" OnClick="btnComprarIndumentaria11_Click"  />
                     </div>
                 </div>
             </div>
@@ -146,8 +146,8 @@
                     <div class="card-body">
                         <h5 class="card-title">Producto 12</h5>
                         <p class="card-text">Descripción breve del producto 12. Oportunidad única.</p>
-                        <a href="#" class="btn btn-primary">Ver más</a>
-                        <a href="#" class="btn btn-primary">Comprar</a>
+                        <asp:Button Text="Ver más" runat="server" CssClass="btn btn-primary" ID="btnVerMasIndumentaria12" OnClick="btnVerMasIndumentaria12_Click"  />
+                        <asp:Button Text="Comprar" runat="server" ID="btnComprarIndumentaria12" CssClass="btn btn-primary" OnClick="btnComprarIndumentaria12_Click" />
                     </div>
                 </div>
             </div>

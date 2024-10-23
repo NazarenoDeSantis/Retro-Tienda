@@ -13,5 +13,40 @@ namespace TPFinal_Ecommerce_Grupo14B
         {
 
         }
+
+        protected void btnComprarDestacados_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnComprarDest2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnComprarDest3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnComprarDest6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnComprarDest5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnComprarDest4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnComprarDest3_Click1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

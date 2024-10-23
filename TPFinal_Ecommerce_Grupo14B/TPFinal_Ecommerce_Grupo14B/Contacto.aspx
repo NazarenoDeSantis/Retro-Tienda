@@ -17,19 +17,19 @@
                     <!-- Nombre -->
                     <div class="mb-3">
                         <label for="nombre" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" id="nombre" placeholder="Ingresa tu nombre" required>
+                        <asp:TextBox runat="server" ID="txtNombre" CssClass="form-control" />
                     </div>
 
                     <!-- Correo Electrónico -->
                     <div class="mb-3">
                         <label for="email" class="form-label">Correo Electrónico</label>
-                        <input type="email" class="form-control" id="email" placeholder="Ingresa tu correo electrónico" required>
+                        <asp:TextBox runat="server" CssClass="form-control" ID="txtEmail" />
                     </div>
 
                     <!-- Asunto -->
                     <div class="mb-3">
                         <label for="asunto" class="form-label">Asunto</label>
-                        <input type="text" class="form-control" id="asunto" placeholder="Asunto del mensaje" required>
+                        <asp:TextBox runat="server" CssClass="form-control" ID="txtAsunto" />
                     </div>
 
                     <!-- Mensaje -->
@@ -39,8 +39,7 @@
                     </div>
 
                     <!-- Botón de Enviar -->
-                    <button type="submit" class="btn btn-primary w-100">Enviar mensaje</button>
-
+                    <asp:Button Text="Enviar mensaje" runat="server" ID="btnEnviarMensaje" CssClass="btn btn-primary w-100" OnClick="btnEnviarMensaje_Click" />
 
                 </div>
             </div>
