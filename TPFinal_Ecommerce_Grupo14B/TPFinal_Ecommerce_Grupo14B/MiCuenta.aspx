@@ -18,10 +18,7 @@
                 <label for="password" class="form-label">Contraseña</label>
                 <input type="password" class="form-control" id="password" placeholder="Ingresa tu contraseña" required>
             </div>
-
             <button type="submit" class="btn btn-primary w-100">Iniciar Sesión</button>
-
-
             <div class="mt-3 text-center">
                 <p>¿No tienes una cuenta? <a href="registro.html">Regístrate aquí</a></p>
             </div>
