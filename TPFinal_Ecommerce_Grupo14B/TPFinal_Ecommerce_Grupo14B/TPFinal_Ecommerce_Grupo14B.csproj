@@ -69,6 +69,7 @@
     <Content Include="Contacto.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="Images\logo.png.png" />
     <Content Include="MiCuenta.aspx" />
     <Content Include="Registro.aspx" />
     <Content Include="Web.config" />
