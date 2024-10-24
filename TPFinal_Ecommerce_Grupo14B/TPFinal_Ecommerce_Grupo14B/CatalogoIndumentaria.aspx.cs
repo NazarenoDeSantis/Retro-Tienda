@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Negocio;
+using Dominio;
 
 namespace TPFinal_Ecommerce_Grupo14B
 {
@@ -11,7 +13,15 @@ namespace TPFinal_Ecommerce_Grupo14B
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            ListarArticulos();
 
+
+        }
+        public void ListarArticulos()
+        {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            List<Articulo> lista = negocio.listar();
+            
         }
 
         protected void btnVerMasIndumentaria_Click(object sender, EventArgs e)
@@ -134,5 +144,7 @@ namespace TPFinal_Ecommerce_Grupo14B
         {
 
         }
+
+
     }
 }
