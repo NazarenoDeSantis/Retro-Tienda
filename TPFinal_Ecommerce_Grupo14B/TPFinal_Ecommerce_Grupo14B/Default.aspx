@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="TPFinal_Ecommerce_Grupo14B.Default" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -19,10 +20,10 @@
                                 <div class="card-body">
                                     <h5 class="card-title">Producto 1</h5>
                                     <p class="card-text">Descripción breve del producto 1.</p>
-                                    <a href="#" class="btn btn-primary">Comprar</a>
+                                    <asp:Button Text="Ver más" runat="server" CssClass="btn btn-primary" ID="btnVerMasDestacados" OnClick="btnVerMasDestacados_Click" S />
                                     <asp:Button Text="Comprar" runat="server" ID="btnComprarDestacados" CssClass="btn btn-primary" OnClick="btnComprarDestacados_Click" />
-                                    
-                                   
+
+
                                 </div>
                             </div>
                         </div>
@@ -32,8 +33,9 @@
                                 <div class="card-body">
                                     <h5 class="card-title">Producto 2</h5>
                                     <p class="card-text">Descripción breve del producto 2.</p>
-                                     <asp:Button Text="Comprar" runat="server" CssClass="btn btn-primary" ID="btnComprarDest2" OnClick="btnComprarDest2_Click" />
-                                   
+                                    <asp:Button Text="Ver más" runat="server" CssClass="btn btn-primary" ID="btnVerMasDest2" OnClick="btnVerMasDest2_Click" />
+                                    <asp:Button Text="Comprar" runat="server" CssClass="btn btn-primary" ID="btnComprarDest2" OnClick="btnComprarDest2_Click" />
+
                                 </div>
                             </div>
                         </div>
@@ -43,8 +45,9 @@
                                 <div class="card-body">
                                     <h5 class="card-title">Producto 3</h5>
                                     <p class="card-text">Descripción breve del producto 3.</p>
-                                      <asp:Button Text="Comprar" runat="server" CssClass="btn btn-primary" ID="btnComprarDest3" OnClick="btnComprarDest3_Click1" />
-                                  
+                                    <asp:Button Text="Ver más" runat="server" CssClass="btn btn-primary" ID="btnVerMasDest3" OnClick="btnVerMasDest3_Click" />
+                                    <asp:Button Text="Comprar" runat="server" CssClass="btn btn-primary" ID="btnComprarDest3" OnClick="btnComprarDest3_Click1" />
+
                                 </div>
                             </div>
                         </div>
@@ -58,8 +61,8 @@
                                 <div class="card-body">
                                     <h5 class="card-title">Producto 4</h5>
                                     <p class="card-text">Descripción breve del producto 4.</p>
-                 
-                                     <asp:Button Text="Comprar" runat="server" CssClass="btn btn-primary" ID="btnComprarDest4" OnClick="btnComprarDest4_Click"   />
+                                    <asp:Button Text="Ver más" runat="server" CssClass="btn btn-primary" ID="btnVerMasdest4" OnClick="btnVerMasdest4_Click" />
+                                    <asp:Button Text="Comprar" runat="server" CssClass="btn btn-primary" ID="btnComprarDest4" OnClick="btnComprarDest4_Click" />
                                 </div>
                             </div>
                         </div>
@@ -69,7 +72,7 @@
                                 <div class="card-body">
                                     <h5 class="card-title">Producto 5</h5>
                                     <p class="card-text">Descripción breve del producto 5.</p>
-                                    <a href="#" class="btn btn-primary">Comprar</a>
+                                    <asp:Button Text="Ver más" runat="server" CssClass="btn btn-primary" ID="btnVerMasDest5" OnClick="btnVerMasDest5_Click" />
                                     <asp:Button ID="btnComprarDest5" Text="Comprar" runat="server" CssClass="btn btn-primary" OnClick="btnComprarDest5_Click" />
                                 </div>
                             </div>
@@ -80,7 +83,8 @@
                                 <div class="card-body">
                                     <h5 class="card-title">Producto 6</h5>
                                     <p class="card-text">Descripción breve del producto 6.</p>
-                                   <asp:Button Text="Comprar" runat="server" CssClass="btn btn-primary" ID="btnComprarDest6" OnClick="btnComprarDest6_Click"   />
+                                    <asp:Button Text="Ver más" runat="server" CssClass="btn btn-primary" ID="btnVerMasDest6" OnClick="btnVerMasDest6_Click" />
+                                    <asp:Button Text="Comprar" runat="server" CssClass="btn btn-primary" ID="btnComprarDest6" OnClick="btnComprarDest6_Click" />
                                 </div>
                             </div>
                         </div>

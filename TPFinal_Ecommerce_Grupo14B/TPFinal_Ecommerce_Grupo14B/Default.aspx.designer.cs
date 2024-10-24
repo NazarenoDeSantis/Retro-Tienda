@@ -15,6 +15,15 @@ namespace TPFinal_Ecommerce_Grupo14B
     {
 
         /// <summary>
+        /// Control btnVerMasDestacados.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnVerMasDestacados;
+
+        /// <summary>
         /// Control btnComprarDestacados.
         /// </summary>
         /// <remarks>
@@ -22,6 +31,15 @@ namespace TPFinal_Ecommerce_Grupo14B
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnComprarDestacados;
+
+        /// <summary>
+        /// Control btnVerMasDest2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnVerMasDest2;
 
         /// <summary>
         /// Control btnComprarDest2.
@@ -33,6 +51,15 @@ namespace TPFinal_Ecommerce_Grupo14B
         protected global::System.Web.UI.WebControls.Button btnComprarDest2;
 
         /// <summary>
+        /// Control btnVerMasDest3.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnVerMasDest3;
+
+        /// <summary>
         /// Control btnComprarDest3.
         /// </summary>
         /// <remarks>
@@ -40,6 +67,15 @@ namespace TPFinal_Ecommerce_Grupo14B
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnComprarDest3;
+
+        /// <summary>
+        /// Control btnVerMasdest4.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnVerMasdest4;
 
         /// <summary>
         /// Control btnComprarDest4.
@@ -51,6 +87,15 @@ namespace TPFinal_Ecommerce_Grupo14B
         protected global::System.Web.UI.WebControls.Button btnComprarDest4;
 
         /// <summary>
+        /// Control btnVerMasDest5.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnVerMasDest5;
+
+        /// <summary>
         /// Control btnComprarDest5.
         /// </summary>
         /// <remarks>
@@ -58,6 +103,15 @@ namespace TPFinal_Ecommerce_Grupo14B
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnComprarDest5;
+
+        /// <summary>
+        /// Control btnVerMasDest6.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnVerMasDest6;
 
         /// <summary>
         /// Control btnComprarDest6.

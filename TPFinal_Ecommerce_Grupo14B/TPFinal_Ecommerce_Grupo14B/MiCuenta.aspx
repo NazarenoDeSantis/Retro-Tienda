@@ -11,12 +11,15 @@
 
 
             <div class="mb-3">
-                <label for="email" class="form-label">Correo Electrónico</label>    
+                <label for="email" class="form-label">Correo Electrónico</label>
                 <asp:TextBox runat="server" CssClass="form-control" ID="txtEmail" type="email" />
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Contraseña</label>
                 <asp:TextBox runat="server" CssClass="form-control" ID="txtPassword" type="password" />
+            </div>
+            <div class="mb-3 text-end">
+                <a href="/RecuperarContrasenia.aspx" class="link-primary">¿Olvidaste tu contraseña?</a>
             </div>
             <asp:Button Text="Iniciar Sesión" CssClass="btn btn-primary w-100" ID="btnIniciarSesion" OnClick="btnIniciarSesion_Click" runat="server" />
             <div class="mt-3 text-center">

@@ -48,5 +48,35 @@ namespace TPFinal_Ecommerce_Grupo14B
         {
 
         }
+
+        protected void btnVerMasDest6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnVerMasDest5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnVerMasdest4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnVerMasDest3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnVerMasDest2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnVerMasDestacados_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
