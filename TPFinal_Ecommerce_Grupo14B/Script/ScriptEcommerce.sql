@@ -106,19 +106,30 @@ GO
 
 -- INSERTs para la tabla Categorias
 INSERT INTO Categorias (nombre)
-VALUES ('Electrónica');
+VALUES ('Regaleria');
 
 INSERT INTO Categorias (nombre)
-VALUES ('Hogar');
+VALUES ('Indumentaria');
 GO
 
 -- INSERTs para la tabla Articulo
-INSERT INTO Articulo (nombre, descripcion, precio, stock, categoria_id)
-VALUES ('Laptop', 'Laptop con 8GB de RAM y 256GB SSD', 1000.00, 50, 1); -- categoría Electrónica
-
-INSERT INTO Articulo (nombre, descripcion, precio, stock, categoria_id)
-VALUES ('Aspiradora', 'Aspiradora de 1500W con bolsa', 300.00, 30, 2); -- categoría Hogar
-GO
+INSERT INTO [Articulo] ([nombre], [descripcion], [precio], [stock], [categoria_id])
+VALUES
+('Radiograbador Antiguo', 'Radiograbador vintage con casetes y radio AM/FM', 1500.00, 10, 1),
+('Televisor CRT', 'Televisor antiguo de tubo con control manual', 2500.00, 5, 1),
+('Máquina de Escribir', 'Máquina de escribir mecánica para uso personal', 1200.00, 7, 1),
+('Teléfono de Disco', 'Teléfono retro de disco con cable largo', 900.00, 12, 1),
+('Vinilo de Música Clásica', 'Disco de vinilo con grandes éxitos de música clásica', 500.00, 20, 1),
+('Cámara Fotográfica Analógica', 'Cámara fotográfica de rollo con lente intercambiable', 3500.00, 4, 1),
+('Walkman Sony', 'Reproductor de casetes portátil marca Sony', 2200.00, 8, 1),
+('Proyector de Diapositivas', 'Proyector para diapositivas de 35mm', 3000.00, 3, 1),
+('Reloj Despertador Mecánico', 'Reloj despertador con campana y cuerda manual', 700.00, 15, 1),
+('Yoyo antiguo', 'Yoyo antiguo', 900.00, 15, 1),
+('Agujereadora manual antigua', 'Agujereadora manual antigua', 1300.00, 9, 1),
+('Grabadora de Voz', 'Grabadora de voz con microcasetes', 1300.00, 9, 1),
+('Remera de los 90 s', 'Remera retro', 4000.00, 6, 2),
+('Bufanda antigua', 'Bufanda retro', 300.00, 30, 2),
+('Reloj pulsera retro', 'Reloj pulsera antigup', 800.00, 25, 2);
 
 -- INSERTs para la tabla Carrito
 INSERT INTO Carrito (usuario_id, total)
@@ -153,9 +164,21 @@ VALUES (2, 2, 1, 300.00); -- 1 aspiradora en el pedido de Maria Lopez
 GO
 
 -- INSERT para la tabla Imagenes
-INSERT INTO Imagenes (id_articulo, url)
-VALUES (1, 'https://example.com/imagenes/laptop.jpg'); -- Imagen para el artículo con id 1 (Laptop)
-
-INSERT INTO Imagenes (id_articulo, url)
-VALUES (2, 'https://example.com/imagenes/aspiradora.jpg'); -- Imagen para el artículo con id 2 (Aspiradora)
-GO
+-- Insertar 15 imágenes para diferentes artículos
+INSERT INTO [Imagenes] ([id_articulo], [url])
+VALUES
+(1, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTF8tB2UL2IhzLBsl0m9Q78tpuQ4xCxeni8Hw&s'),  -- Radiograbador antiguo
+(2, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRcM4oUIECQe7EtVHD26GNGWkaWy52FESM1g&s'),  -- televisor crt
+(3, 'https://www.hermanoscastano.es/wp-content/uploads/2021/07/HCI07280-scaled-900x1011.jpg'),        -- Máquina de escribir
+(4, 'https://www.museocostarica.go.cr/wp-content/grand-media/image/telefono-de-disco.jpg'),          -- Teléfono de disco
+(5, 'https://http2.mlstatic.com/D_NQ_NP_875519-MLA51615080855_092022-O.webp'),   -- Vinilo de música clásica
+(6, 'https://png.pngtree.com/png-vector/20240529/ourlarge/pngtree-compact-vintage-analog-camera-png-image_12547114.png'),        -- Cámara fotográfica analógica
+(7, 'https://i0.wp.com/hipertextual.com/wp-content/uploads/2019/06/hipertextual-walkman-abuelo-ipod-cumple-40-anos-2019512483-860x573.jpg?resize=780%2C520&quality=70&strip=all&ssl=1'),            -- Walkman Sony
+(8, 'https://http2.mlstatic.com/D_NQ_NP_674143-MLA71897377106_092023-O.webp'),  -- Proyector de diapositivas
+(9, 'https://i.etsystatic.com/6858355/r/il/0b1900/3599636435/il_570xN.3599636435_itkg.jpg'),      -- Reloj despertador mecánico
+(10, 'https://i.ebayimg.com/thumbs/images/g/1Q4AAOSwrAFm2LUj/s-l1200.jpg'),          -- yoyo antiguo
+(11, 'https://i.ebayimg.com/images/g/Hu0AAOSw~P9imjyW/s-l640.jpg'),            -- agujereadora manual antigua
+(12, 'https://www.shutterstock.com/image-vector/vector-cassette-recorder-xxl-icon-600nw-75762229.jpg'),      -- gravadora de voz
+(13, 'https://acdn.mitiendanube.com/stores/906/459/products/italia1-e1ad25a33da28d316b16002239341759-480-0.jpg'),      -- remera de los 90's
+(14, 'https://m.media-amazon.com/images/I/41UVRe4k8LL._AC_SY580_.jpg'), --bufanda antigua
+(15, 'https://a.1stdibscdn.com/omega-1940s-retro-rose-gold-and-rubies-bracelet-watch-for-sale/j_94/j_221583921709072820347/j_22158392_1709072821766_bg_processed.jpg');        -- reloj pulsera retro
