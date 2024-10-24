@@ -71,10 +71,13 @@
     <Content Include="Default.aspx" />
     <Content Include="DetallesProducto.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="Images\imagenVasos.jpg" />
     <Content Include="Images\logo.png.png" />
+    <Content Include="Images\wallpapper.jpeg" />
     <Content Include="MiCuenta.aspx" />
     <Content Include="RecuperarContrasenia.aspx" />
     <Content Include="Registro.aspx" />
+    <Content Include="Styles\StyleSheet.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
