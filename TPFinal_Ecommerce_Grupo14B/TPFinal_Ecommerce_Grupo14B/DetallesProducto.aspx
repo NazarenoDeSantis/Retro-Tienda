@@ -10,15 +10,15 @@
         <div class="row">
             <div class="col-md-6">
                 <!-- Imagen del Producto -->
-                <img src="Images/imagenVasos.jpg" class="img-fluid" alt="Imagen del Producto">
+                <img src="Images/indumentaria1.jpg" class="img-fluid" alt="Imagen del Producto">
             </div>
             <div class="col-md-6">
                 <!-- Información del Producto -->
-                <h2>Producto 1 </h2>
+                <h2>Remera estampa 90'</h2>
                 <p class="text-muted">Código del producto: #12345</p>
 
 
-                <p class="mt-3">Este es un excelente producto que cuenta con las mejores características y te ofrece la mejor experiencia de uso. Perfecto para cualquier ocasión.</p>
+                <p class="mt-3">Remera retro con temática Gamer de los años 90', unisex, talle único</p>
 
                 <!-- Precio -->
                 <h3 class="mt-3 text-success">$199.99</h3>
@@ -27,14 +27,14 @@
                 <div class="mt-4">
                     <label for="cantidad" class="form-label">Cantidad</label>
                     <asp:TextBox runat="server" ID="txtCantidad" CssClass="form-control w-25" />
-                    <asp:Button Text="Agregar al Carrito" runat="server" ID="btnAgregarCarrito" CssClass="btn btn-primary mt-3 w-100" />
+                    <asp:Button Text="Agregar al Carrito" runat="server" ID="btnAgregarCarrito" CssClass="btn btn-primary mt-3 w-100" OnClick="btnAgregarCarrito_Click" />
                 </div>
                 <div class="mt-4">
                     <h5>Características:</h5>
                     <ul>
-                        <li>Característica 1</li>
-                        <li>Característica 2</li>
-                        <li>Característica 3</li>
+                        <li>Material: Algodón 100%</li>
+                        <li>Color: Negro</li>
+                        <li>Medidas: Ancho: 56cm, Largo: 73cm </li>
                     </ul>
                 </div>
                 <div class="mt-3">

@@ -22,7 +22,7 @@ namespace TPFinal_Ecommerce_Grupo14B
 
         protected void btnComprarIndumentaria_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("Carrito.aspx");
         }
 
         protected void btnVerMasIndumentaria2_Click(object sender, EventArgs e)

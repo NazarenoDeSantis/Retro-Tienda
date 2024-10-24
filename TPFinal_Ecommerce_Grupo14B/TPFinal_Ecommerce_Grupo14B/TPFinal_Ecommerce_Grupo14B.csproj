@@ -71,7 +71,13 @@
     <Content Include="Default.aspx" />
     <Content Include="DetallesProducto.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="Images\imagenAlbum.jpg" />
     <Content Include="Images\imagenVasos.jpg" />
+    <Content Include="Images\ind2.jpg" />
+    <Content Include="Images\ind3.jpg" />
+    <Content Include="Images\ind4.jpg" />
+    <Content Include="Images\ind5.jpg" />
+    <Content Include="Images\indumentaria1.jpg" />
     <Content Include="Images\logo.png.png" />
     <Content Include="Images\wallpapper.jpeg" />
     <Content Include="MiCuenta.aspx" />

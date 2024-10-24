@@ -4,6 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
+
     <div class="container mt-5">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
@@ -17,9 +18,9 @@
             <div class="col">
                 <div class="card h-100">
                     <%--<img src="https://via.placeholder.com/150" class="card-img-top" alt="Producto 1">--%>
-                    <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/imagenVasos.jpg" Width="400" Height="400" AlternateText="Vaso de las tortugas ninjas" CssClass="card-img-top" />
+                    <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/imagenVasos.jpg" Width="250" AlternateText="Vaso de las tortugas ninjas" CssClass="card-img-top" />
                     <div class="card-body">
-                        <h5 class="card-title">Producto 1</h5>
+                        <h5 class="card-title">Vasos coleccionables</h5>
                         <p class="card-text">Descripción breve del producto 1. Es un excelente artículo.</p>
                         <asp:Button Text="Ver más" runat="server" CssClass="btn btn-primary" ID="btnVerMasRegaleria" OnClick="btnVerMasRegaleria_Click" />
                         <asp:Button Text="Comprar" runat="server" ID="btnComprarRegaleria" CssClass="btn btn-primary" OnClick="btnComprarRegaleria_Click" />

@@ -49,30 +49,4 @@
         </div>
     </div>
 
-    <script>
-        // Función para eliminar un producto del carrito
-        function eliminarProducto(boton) {
-            // Seleccionar la fila del producto (el tr) y eliminarlo
-            let fila = boton.closest('tr');
-            fila.remove();
-
-            // Actualizar el total de la compra
-            actualizarTotal();
-        }
-
-        // Función para actualizar el total del carrito
-        function actualizarTotal() {
-            let total = 0;
-            let filas = document.querySelectorAll('#carrito tr');
-
-            filas.forEach(function (fila) {
-                // Obtener el subtotal de cada producto (que está en la columna de subtotales)
-                let subtotal = parseFloat(fila.cells[3].textContent.replace('$', ''));
-                total += subtotal;
-            });
-
-            // Actualizar el texto del total en el HTML
-            document.getElementById('total').textContent = 'Total: $' + total.toFixed(2);
-        }
-    </script>
 </asp:Content>

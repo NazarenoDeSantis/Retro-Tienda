@@ -15,6 +15,15 @@ namespace TPFinal_Ecommerce_Grupo14B
     {
 
         /// <summary>
+        /// Control Image1Ind.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image Image1Ind;
+
+        /// <summary>
         /// Control btnVerMasIndumentaria.
         /// </summary>
         /// <remarks>
