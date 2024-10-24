@@ -26,7 +26,7 @@ namespace TPFinal_Ecommerce_Grupo14B
 
         protected void btnPagar_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("Pagos.aspx");
         }
     }
 }
