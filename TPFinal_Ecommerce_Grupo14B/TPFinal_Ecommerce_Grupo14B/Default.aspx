@@ -20,7 +20,7 @@
                                 <div class="card-body">
                                     <h5 class="card-title">Producto 1</h5>
                                     <p class="card-text">Descripción breve del producto 1.</p>
-                                    <asp:Button Text="Ver más" runat="server" CssClass="btn btn-primary" ID="btnVerMasDestacados" OnClick="btnVerMasDestacados_Click" S />
+                                    <asp:Button Text="Ver más" runat="server" CssClass="btn btn-primary" ID="btnVerMasDestacados" OnClick="btnVerMasDestacados_Click" />
                                     <asp:Button Text="Comprar" runat="server" ID="btnComprarDestacados" CssClass="btn btn-primary" OnClick="btnComprarDestacados_Click" />
 
 

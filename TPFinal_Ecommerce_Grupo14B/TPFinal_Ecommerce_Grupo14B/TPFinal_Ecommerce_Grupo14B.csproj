@@ -68,6 +68,7 @@
     <Content Include="CatalogoRegaleria.aspx" />
     <Content Include="Contacto.aspx" />
     <Content Include="Default.aspx" />
+    <Content Include="DetallesProducto.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Images\logo.png.png" />
     <Content Include="MiCuenta.aspx" />
@@ -103,6 +104,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DetallesProducto.aspx.cs">
+      <DependentUpon>DetallesProducto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DetallesProducto.aspx.designer.cs">
+      <DependentUpon>DetallesProducto.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

@@ -16,6 +16,7 @@ namespace TPFinal_Ecommerce_Grupo14B
 
         protected void btnVerMasIndumentaria_Click(object sender, EventArgs e)
         {
+            Response.Redirect("DetallesProducto.aspx");
 
         }
 

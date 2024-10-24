@@ -16,6 +16,7 @@ namespace TPFinal_Ecommerce_Grupo14B
 
         protected void btnComprarDestacados_Click(object sender, EventArgs e)
         {
+           
 
         }
 
@@ -76,7 +77,9 @@ namespace TPFinal_Ecommerce_Grupo14B
 
         protected void btnVerMasDestacados_Click(object sender, EventArgs e)
         {
-
+            
         }
+
+       
     }
 }
