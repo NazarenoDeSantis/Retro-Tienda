@@ -7,7 +7,7 @@ GO
 
 -- Tabla Usuario
 CREATE TABLE Usuarios (
-    id INT IDENTITY(1,1) PRIMARY KEY,
+    idUsuario INT IDENTITY(1,1) PRIMARY KEY,
     nombre NVARCHAR(100) NOT NULL,
     correo NVARCHAR(100) NOT NULL UNIQUE,
     clave NVARCHAR(100) NOT NULL,
@@ -15,13 +15,13 @@ CREATE TABLE Usuarios (
     telefono NVARCHAR(25),
     localidad NVARCHAR(100), 
     fecha_nacimiento DATE,   
-    estado NVARCHAR(50)
+    estado BIT DEFAULT 1
 );
 GO
 
 -- Tabla Categorias
 CREATE TABLE Categorias (
-    id INT IDENTITY(1,1) PRIMARY KEY,
+    idCategoria INT IDENTITY(1,1) PRIMARY KEY,
     nombre NVARCHAR(100) NOT NULL
     --descripcion NVARCHAR(MAX)
 );
@@ -29,68 +29,69 @@ GO
 
 -- Tabla Articulo
 CREATE TABLE Articulos (
-    id INT IDENTITY(1,1) PRIMARY KEY,
+    idArticulo INT IDENTITY(1,1) PRIMARY KEY,
     nombre NVARCHAR(100) NOT NULL,
     descripcion NVARCHAR(MAX),
     precio DECIMAL(10, 2) NOT NULL,
     stock INT NOT NULL,
     categoria_id INT NULL, -- Permitir NULL para ON DELETE SET NULL
-    CONSTRAINT FK_Articulo_Categoria FOREIGN KEY (categoria_id) REFERENCES Categorias(id)
+    estado BIT DEFAULT 1
+    CONSTRAINT FK_Articulo_Categoria FOREIGN KEY (categoria_id) REFERENCES Categorias(idCategoria)
 );
 GO
 
 -- Tabla Carrito
 CREATE TABLE Carritos (
-    id INT IDENTITY(1,1) PRIMARY KEY,
-    usuario_id INT NULL, -- Permitir NULL si se elimina el usuario
+    idCarrito INT IDENTITY(1,1) PRIMARY KEY,
+    idUsuario INT NULL, -- Permitir NULL si se elimina el usuario
     total DECIMAL(10, 2) NOT NULL DEFAULT 0.00,
     fecha_creacion DATETIME DEFAULT GETDATE(),
-    CONSTRAINT FK_Carrito_Usuario FOREIGN KEY (usuario_id) REFERENCES Usuario(id) 
+    CONSTRAINT FK_Carrito_Usuario FOREIGN KEY (idUsuario) REFERENCES Usuarios(idUsuario) 
 );
 GO
 
 -- Tabla Pedido
 CREATE TABLE Pedidos (
-    id INT IDENTITY(1,1) PRIMARY KEY,
-    usuario_id INT NULL, -- Permitir NULL si se elimina el usuario
-    carrito_id INT NOT NULL,
+    idPedido INT IDENTITY(1,1) PRIMARY KEY,
+    idUsuario INT NULL, -- Permitir NULL si se elimina el usuario
+    idCarrito INT NOT NULL,
     total DECIMAL(10, 2) NOT NULL,
     fecha_pedido DATETIME DEFAULT GETDATE(),
     estado NVARCHAR(20) NOT NULL DEFAULT 'pendiente',
     direccion_envio NVARCHAR(255),
-    CONSTRAINT FK_Pedido_Usuario FOREIGN KEY (usuario_id) REFERENCES Usuario(id) ,
-    CONSTRAINT FK_Pedido_Carrito FOREIGN KEY (carrito_id) REFERENCES Carrito(id) 
+    CONSTRAINT FK_Pedido_Usuario FOREIGN KEY (idUsuario) REFERENCES Usuarios(idUsuario) ,
+    CONSTRAINT FK_Pedido_Carrito FOREIGN KEY (idCarrito) REFERENCES Carritos(idCarrito) 
 );
 GO
 
 -- Tabla intermedia para los art�culos en el carrito
-CREATE TABLE Carrito_Articulo (
-    id INT IDENTITY(1,1) PRIMARY KEY,
-    carrito_id INT NOT NULL,
-    articulo_id INT NOT NULL,
+CREATE TABLE Carrito_Articulos (
+    idCarritoArticulo INT IDENTITY(1,1) PRIMARY KEY,
+    idCarrito INT NOT NULL,
+    idArticulo INT NOT NULL,
     cantidad INT NOT NULL,
-    CONSTRAINT FK_CarritoArticulo_Carrito FOREIGN KEY (carrito_id) REFERENCES Carrito(id) ,
-    CONSTRAINT FK_CarritoArticulo_Articulo FOREIGN KEY (articulo_id) REFERENCES Articulo(id) 
+    CONSTRAINT FK_CarritoArticulo_Carrito FOREIGN KEY (idCarrito) REFERENCES Carritos(idCarrito) ,
+    CONSTRAINT FK_CarritoArticulo_Articulo FOREIGN KEY (idArticulo) REFERENCES Articulos(idArticulo) 
 );
 GO
 
 -- Tabla intermedia para los art�culos en el pedido
-CREATE TABLE Pedido_Articulo (
-    id INT IDENTITY(1,1) PRIMARY KEY,
-    pedido_id INT NOT NULL,
-    articulo_id INT NOT NULL,
+CREATE TABLE Pedido_Articulos (
+    idPedidoArticulo INT IDENTITY(1,1) PRIMARY KEY,
+    idPedido INT NOT NULL,
+    idArticulo INT NOT NULL,
     cantidad INT NOT NULL,
     precio_unitario DECIMAL(10, 2) NOT NULL,
-    CONSTRAINT FK_PedidoArticulo_Pedido FOREIGN KEY (pedido_id) REFERENCES Pedido(id) ,
-    CONSTRAINT FK_PedidoArticulo_Articulo FOREIGN KEY (articulo_id) REFERENCES Articulo(id) 
+    CONSTRAINT FK_PedidoArticulo_Pedido FOREIGN KEY (idPedido) REFERENCES Pedidos(idPedido) ,
+    CONSTRAINT FK_PedidoArticulo_Articulo FOREIGN KEY (idArticulo) REFERENCES Articulos(idArticulo) 
 );
 GO
 
 CREATE TABLE Imagenes (
-    id_imagen INT IDENTITY(1,1) PRIMARY KEY,  
-    id_articulo INT,                         
+    idImagen INT IDENTITY(1,1) PRIMARY KEY,  
+    idArticulo INT,                         
     url NVARCHAR(255) NOT NULL,               
-    CONSTRAINT FK_Imagenes_Articulo FOREIGN KEY (id_articulo) REFERENCES Articulo(id) 
+    CONSTRAINT FK_Imagenes_Articulo FOREIGN KEY (idArticulo) REFERENCES Articulos(idArticulo) 
 );
 GO
 
@@ -98,10 +99,10 @@ GO
 
 -- INSERTs para la tabla Usuario
 INSERT INTO Usuarios (nombre, correo, clave, direccion, telefono, localidad, fecha_nacimiento, estado)
-VALUES ('Juan Perez', 'juan.perez@mail.com', 'clave123', 'Calle Falsa 123', '555-1234', 'Buenos Aires', '1985-05-10', 'activo');
+VALUES ('Juan Perez', 'juan.perez@mail.com', 'clave123', 'Calle Falsa 123', '555-1234', 'Buenos Aires', '1985-05-10', 1);
 
 INSERT INTO Usuarios (nombre, correo, clave, direccion, telefono, localidad, fecha_nacimiento, estado)
-VALUES ('Maria Lopez', 'maria.lopez@mail.com', 'clave456', 'Av. Siempre Viva 456', '555-5678', 'Cordoba', '1990-09-15', 'activo');
+VALUES ('Maria Lopez', 'maria.lopez@mail.com', 'clave456', 'Av. Siempre Viva 456', '555-5678', 'Cordoba', '1990-09-15', 1);
 GO
 
 -- INSERTs para la tabla Categorias
@@ -132,40 +133,40 @@ VALUES
 ('Reloj pulsera retro', 'Reloj pulsera antigup', 800.00, 25, 2);
 
 -- INSERTs para la tabla Carrito
-INSERT INTO Carritos (usuario_id, total)
+INSERT INTO Carritos (idUsuario, total)
 VALUES (1, 0.00); -- carrito de Juan Perez
 
-INSERT INTO Carritos (usuario_id, total)
+INSERT INTO Carritos (idUsuario, total)
 VALUES (2, 0.00); -- carrito de Maria Lopez
 GO
 
 -- INSERTs para la tabla Pedido
-INSERT INTO Pedidos (usuario_id, carrito_id, total, direccion_envio)
+INSERT INTO Pedidos (idUsuario, idCarrito, total, direccion_envio)
 VALUES (1, 1, 1500.00, 'Calle Falsa 123'); -- pedido de Juan Perez
 
-INSERT INTO Pedidos(usuario_id, carrito_id, total, direccion_envio)
+INSERT INTO Pedidos(idUsuario, idCarrito, total, direccion_envio)
 VALUES (2, 2, 300.00, 'Av. Siempre Viva 456'); -- pedido de Maria Lopez
 GO
 
 -- INSERTs para la tabla Carrito_Articulo
-INSERT INTO Carrito_Articulos (carrito_id, articulo_id, cantidad)
+INSERT INTO Carrito_Articulos (idCarrito, idArticulo, cantidad)
 VALUES (1, 1, 1); -- Juan Perez compra 1 laptop
 
-INSERT INTO Carrito_Articulos (carrito_id, articulo_id, cantidad)
+INSERT INTO Carrito_Articulos (idCarrito, idArticulo, cantidad)
 VALUES (2, 2, 1); -- Maria Lopez compra 1 aspiradora
 GO
 
 -- INSERTs para la tabla Pedido_Articulo
-INSERT INTO Pedido_Articulos (pedido_id, articulo_id, cantidad, precio_unitario)
+INSERT INTO Pedido_Articulos (idPedido, idArticulo, cantidad, precio_unitario)
 VALUES (1, 1, 1, 1000.00); -- 1 laptop en el pedido de Juan Perez
 
-INSERT INTO Pedido_Articulos (pedido_id, articulo_id, cantidad, precio_unitario)
+INSERT INTO Pedido_Articulos (idPedido, idArticulo, cantidad, precio_unitario)
 VALUES (2, 2, 1, 300.00); -- 1 aspiradora en el pedido de Maria Lopez
 GO
 
 -- INSERT para la tabla Imagenes
 -- Insertar 15 im�genes para diferentes art�culos
-INSERT INTO [Imagenes] ([id_articulo], [url])
+INSERT INTO [Imagenes] ([idArticulo], [url])
 VALUES
 (1, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTF8tB2UL2IhzLBsl0m9Q78tpuQ4xCxeni8Hw&s'),  -- Radiograbador antiguo
 (2, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRcM4oUIECQe7EtVHD26GNGWkaWy52FESM1g&s'),  -- televisor crt
