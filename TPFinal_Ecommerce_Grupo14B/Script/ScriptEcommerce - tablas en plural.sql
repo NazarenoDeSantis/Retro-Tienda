@@ -183,3 +183,8 @@ VALUES
 (13, 'https://acdn.mitiendanube.com/stores/906/459/products/italia1-e1ad25a33da28d316b16002239341759-480-0.jpg'),      -- remera de los 90's
 (14, 'https://m.media-amazon.com/images/I/41UVRe4k8LL._AC_SY580_.jpg'), --bufanda antigua
 (15, 'https://a.1stdibscdn.com/omega-1940s-retro-rose-gold-and-rubies-bracelet-watch-for-sale/j_94/j_221583921709072820347/j_22158392_1709072821766_bg_processed.jpg');        -- reloj pulsera retro
+
+ALTER TABLE Usuarios add IdRoll int NULL
+
+ALTER TABLE Usuarios
+ADD IdRol INT DEFAULT 0

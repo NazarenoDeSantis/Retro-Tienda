@@ -13,7 +13,8 @@ namespace Dominio
         public string Telefono { get; set; }             
         public string Localidad { get; set; }            
         public DateTime FechaNacimiento { get; set; }    
-        public string Estado { get; set; }               
+        public bool Estado { get; set; }
+        public int IdRol { get; set; }
 
     }
 }

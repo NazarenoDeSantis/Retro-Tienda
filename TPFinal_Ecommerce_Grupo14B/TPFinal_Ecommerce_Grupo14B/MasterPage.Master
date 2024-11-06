@@ -56,6 +56,9 @@
                         <li class="nav-item">
                             <asp:LinkButton ID="LinkButton1" runat="server" Visible="true" CssClass="nav-link ">Borrar etiqueta</asp:LinkButton>
                         </li>
+                         <li class="nav-item">
+                             <a class="nav-link " aria-current="page" href="/AdministrarUsuarios.aspx">Administar Usuarios</a>
+                         </li>
                     </ul>
                     <div class="d-flex" role="search">
                         <input class="form-control me-2" type="search" placeholder="Buscador rápido" aria-label="search">
