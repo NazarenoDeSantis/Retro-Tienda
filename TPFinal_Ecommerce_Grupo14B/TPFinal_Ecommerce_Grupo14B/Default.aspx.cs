@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Dominio;
+using Negocio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,8 +11,18 @@ namespace TPFinal_Ecommerce_Grupo14B
 {
     public partial class Default : System.Web.UI.Page
     {
+        public List<Articulo> listaArticulos { get; set; }
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            listaArticulos = negocio.listarConSP();
+
+            if (!IsPostBack)
+            {
+                //repRepetidor.DataSource = listaArticulos;
+                //repRepetidor.DataBind();
+            }
 
         }
 
