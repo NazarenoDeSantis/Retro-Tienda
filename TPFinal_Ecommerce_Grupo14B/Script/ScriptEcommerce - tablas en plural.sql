@@ -8,12 +8,12 @@ GO
 -- Tabla Usuario
 CREATE TABLE Usuarios (
     idUsuario INT IDENTITY(1,1) PRIMARY KEY,
-    nombre NVARCHAR(100) NOT NULL,
-    correo NVARCHAR(100) NOT NULL UNIQUE,
-    clave NVARCHAR(100) NOT NULL,
-    direccion NVARCHAR(255),
-    telefono NVARCHAR(25),
-    localidad NVARCHAR(100), 
+    nombre VARCHAR(100) NOT NULL,
+    correo VARCHAR(50) NOT NULL UNIQUE,
+    clave VARCHAR(50) NOT NULL,
+    direccion VARCHAR(200),
+    telefono VARCHAR(25),
+    localidad VARCHAR(100), 
     fecha_nacimiento DATE,   
     estado BIT DEFAULT 1
 );
@@ -22,19 +22,19 @@ GO
 -- Tabla Categorias
 CREATE TABLE Categorias (
     idCategoria INT IDENTITY(1,1) PRIMARY KEY,
-    nombre NVARCHAR(100) NOT NULL
-    --descripcion NVARCHAR(MAX)
+    nombre VARCHAR(100) NOT NULL
+    
 );
 GO
 
 -- Tabla Articulo
 CREATE TABLE Articulos (
     idArticulo INT IDENTITY(1,1) PRIMARY KEY,
-    nombre NVARCHAR(100) NOT NULL,
-    descripcion NVARCHAR(MAX),
+    nombre VARCHAR(100) NOT NULL,
+    descripcion VARCHAR(200),
     precio DECIMAL(10, 2) NOT NULL,
     stock INT NOT NULL,
-    categoria_id INT NULL, -- Permitir NULL para ON DELETE SET NULL
+    categoria_id INT NOT NULL, -- Permitir NULL para ON DELETE SET NULL
     estado BIT DEFAULT 1
     CONSTRAINT FK_Articulo_Categoria FOREIGN KEY (categoria_id) REFERENCES Categorias(idCategoria)
 );
@@ -57,8 +57,8 @@ CREATE TABLE Pedidos (
     idCarrito INT NOT NULL,
     total DECIMAL(10, 2) NOT NULL,
     fecha_pedido DATETIME DEFAULT GETDATE(),
-    estado NVARCHAR(20) NOT NULL DEFAULT 'pendiente',
-    direccion_envio NVARCHAR(255),
+    estado VARCHAR(20) NOT NULL DEFAULT 'pendiente',
+    direccion_envio VARCHAR(255),
     CONSTRAINT FK_Pedido_Usuario FOREIGN KEY (idUsuario) REFERENCES Usuarios(idUsuario) ,
     CONSTRAINT FK_Pedido_Carrito FOREIGN KEY (idCarrito) REFERENCES Carritos(idCarrito) 
 );
@@ -90,7 +90,7 @@ GO
 CREATE TABLE Imagenes (
     idImagen INT IDENTITY(1,1) PRIMARY KEY,  
     idArticulo INT,                         
-    url NVARCHAR(255) NOT NULL,               
+    url VARCHAR(200) NOT NULL,               
     CONSTRAINT FK_Imagenes_Articulo FOREIGN KEY (idArticulo) REFERENCES Articulos(idArticulo) 
 );
 GO
@@ -118,13 +118,13 @@ INSERT INTO [Articulos] ([nombre], [descripcion], [precio], [stock], [categoria_
 VALUES
 ('Radiograbador Antiguo', 'Radiograbador vintage con casetes y radio AM/FM', 1500.00, 10, 1),
 ('Televisor CRT', 'Televisor antiguo de tubo con control manual', 2500.00, 5, 1),
-('M�quina de Escribir', 'M�quina de escribir mec�nica para uso personal', 1200.00, 7, 1),
-('Tel�fono de Disco', 'Tel�fono retro de disco con cable largo', 900.00, 12, 1),
-('Vinilo de M�sica Cl�sica', 'Disco de vinilo con grandes �xitos de m�sica cl�sica', 500.00, 20, 1),
-('C�mara Fotogr�fica Anal�gica', 'C�mara fotogr�fica de rollo con lente intercambiable', 3500.00, 4, 1),
-('Walkman Sony', 'Reproductor de casetes port�til marca Sony', 2200.00, 8, 1),
+('Máquina de Escribir', 'Máquina de escribir mecánica para uso personal', 1200.00, 7, 1),
+('Teléfono de Disco', 'Teléfono retro de disco con cable largo', 900.00, 12, 1),
+('Vinilo de Música Clásica', 'Disco de vinilo con grandes éxitos de música clásica', 500.00, 20, 1),
+('Cámara Fotográfica Analágica', 'Cámara fotográfica de rollo con lente intercambiable', 3500.00, 4, 1),
+('Walkman Sony', 'Reproductor de casetes portátil marca Sony', 2200.00, 8, 1),
 ('Proyector de Diapositivas', 'Proyector para diapositivas de 35mm', 3000.00, 3, 1),
-('Reloj Despertador Mec�nico', 'Reloj despertador con campana y cuerda manual', 700.00, 15, 1),
+('Reloj Despertador Mecánico', 'Reloj despertador con campana y cuerda manual', 700.00, 15, 1),
 ('Yoyo antiguo', 'Yoyo antiguo', 900.00, 15, 1),
 ('Agujereadora manual antigua', 'Agujereadora manual antigua', 1300.00, 9, 1),
 ('Grabadora de Voz', 'Grabadora de voz con microcasetes', 1300.00, 9, 1),
@@ -134,10 +134,10 @@ VALUES
 
 -- INSERTs para la tabla Carrito
 INSERT INTO Carritos (idUsuario, total)
-VALUES (1, 0.00); -- carrito de Juan Perez
+VALUES (1, 20.00); -- carrito de Juan Perez
 
 INSERT INTO Carritos (idUsuario, total)
-VALUES (2, 0.00); -- carrito de Maria Lopez
+VALUES (2, 40.00); -- carrito de Maria Lopez
 GO
 
 -- INSERTs para la tabla Pedido
@@ -183,4 +183,3 @@ VALUES
 (13, 'https://acdn.mitiendanube.com/stores/906/459/products/italia1-e1ad25a33da28d316b16002239341759-480-0.jpg'),      -- remera de los 90's
 (14, 'https://m.media-amazon.com/images/I/41UVRe4k8LL._AC_SY580_.jpg'), --bufanda antigua
 (15, 'https://a.1stdibscdn.com/omega-1940s-retro-rose-gold-and-rubies-bracelet-watch-for-sale/j_94/j_221583921709072820347/j_22158392_1709072821766_bg_processed.jpg');        -- reloj pulsera retro
-

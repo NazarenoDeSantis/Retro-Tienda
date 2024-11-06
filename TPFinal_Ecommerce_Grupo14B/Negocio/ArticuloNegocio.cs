@@ -49,14 +49,15 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
-        public List<Articulo> listarConSP()
+        public List<Articulo> listarConSP(string sp, int categoriaID)
         {
             List<Articulo> lista = new List<Articulo>();
             AccesoDatos datos = new AccesoDatos();
             try
             {
 
-                datos.setearProcedimiento("spListarArticulos");
+                datos.setearProcedimiento(sp);
+                datos.setearParametro("@categoria_id", categoriaID);
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
