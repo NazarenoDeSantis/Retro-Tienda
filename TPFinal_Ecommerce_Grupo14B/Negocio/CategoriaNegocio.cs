@@ -47,21 +47,11 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("SELECT COUNT(*) FROM Categorias WHERE nombre = @nombre");
+                datos.setearConsulta("INSERT INTO Categorias (nombre) VALUES (@nombre)");
                 datos.setearParametro("@nombre", categoria.Nombre);
+                datos.ejecutarAccion();
 
-                int cantidad = (int)datos.ejecutarAccionScalar();
-
-                if(cantidad > 0)
-                {
-                    throw new Exception($"Ya existe una Categoría con nombre '{categoria.Nombre}' en la base de datos. ");
-                }
-                else
-                {
-                    datos.setearConsulta("INSERT INTO Categorias (nombre) VALUES (@nombre)");
-                    datos.setearParametro("@nombre", categoria.Nombre);
-                    datos.ejecutarAccion();
-                }
+               
             }
             catch (Exception ex )
             {
@@ -76,9 +66,9 @@ namespace Negocio
 
         public void eliminar(int id)
         {
+            AccesoDatos datos = new AccesoDatos();
             try
             {
-                AccesoDatos datos = new AccesoDatos();
                 datos.setearConsulta(" DELETE FROM Categorias WHERE idCategoria = @id");
                 datos.setearParametro("id", id);
                 datos.ejecutarAccion();
@@ -87,6 +77,10 @@ namespace Negocio
             {
 
                 throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
             }
 
         }
@@ -122,7 +116,10 @@ namespace Negocio
             }
             finally
             {
-                datos.cerrarConexion();
+                if (datos != null)
+                {
+                    datos.cerrarConexion();
+                }
             }
         }
     }
