@@ -9,6 +9,7 @@
         public int Stock { get; set; }             
         public int CategoriaId { get; set; }
         public string UrlImagen { get; set; }
+        public bool Estado { get; set; }
 
     }
 }

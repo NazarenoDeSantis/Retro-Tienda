@@ -64,6 +64,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AdministrarArticulos.aspx" />
     <Content Include="AdministrarUsuarios.aspx" />
     <Content Include="Carrito.aspx" />
     <Content Include="CatalogoIndumentaria.aspx" />
@@ -71,6 +72,7 @@
     <Content Include="Contacto.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="DetallesProducto.aspx" />
+    <Content Include="FormularioArticulo.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Images\imagenAlbum.jpg" />
     <Content Include="Images\imagenVasos.jpg" />
@@ -90,6 +92,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdministrarArticulos.aspx.cs">
+      <DependentUpon>AdministrarArticulos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdministrarArticulos.aspx.designer.cs">
+      <DependentUpon>AdministrarArticulos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AdministrarUsuarios.aspx.cs">
       <DependentUpon>AdministrarUsuarios.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -138,6 +147,13 @@
     </Compile>
     <Compile Include="DetallesProducto.aspx.designer.cs">
       <DependentUpon>DetallesProducto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormularioArticulo.aspx.cs">
+      <DependentUpon>FormularioArticulo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormularioArticulo.aspx.designer.cs">
+      <DependentUpon>FormularioArticulo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
