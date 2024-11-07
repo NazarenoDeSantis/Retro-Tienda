@@ -3,7 +3,15 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <h1> REGISTRO PROVISORIO DE CATEGORIAS   </h1>
+    <h2> Registro Provisorio De Categorias   </h2>
+
+    <asp:GridView ID="gvCategoria" runat="server" AutoGenerateColumns="False" CssClass="table  table-bordered table-hover" HeaderStyle-CssClass="table-dark" > 
+        <Columns>
+            <asp:BoundField DataField="id" HeaderText="ID" ReadOnly="true" SortExpression="id" />
+            <asp:BoundField DataField="nombre" HeaderText="Nombre" SortExpression="nombre" />
+        </Columns>
+    </asp:GridView>
+
 
     
  
