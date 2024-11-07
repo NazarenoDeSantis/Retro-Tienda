@@ -17,7 +17,7 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("select idUsuario, nombre, correo, clave, direccion, telefono, localidad, fecha_nacimiento, estado, IdRoll from Usuarios");
+                datos.setearConsulta("select idUsuario, nombre, correo, clave, direccion, telefono, localidad, fecha_nacimiento, estado, IdRol from Usuarios");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -33,7 +33,7 @@ namespace Negocio
                     aux.Localidad = (string)datos.Lector["localidad"];
                     aux.FechaNacimiento = (DateTime)datos.Lector["fecha_nacimiento"];
                     aux.Estado = (bool)datos.Lector["estado"];
-                    aux.IdRol = (int)datos.Lector["IdRoll"];
+                    aux.IdRol = (int)datos.Lector["IdRol"];
 
                     lista.Add(aux);
                 }

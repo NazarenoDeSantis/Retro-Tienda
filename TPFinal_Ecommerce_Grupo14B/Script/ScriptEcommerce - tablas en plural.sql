@@ -1,3 +1,6 @@
+use master
+drop database if exists Ecommerce_DB;
+
 -- Crear la base de datos
 CREATE DATABASE Ecommerce_DB;
 GO
@@ -14,7 +17,8 @@ CREATE TABLE Usuarios (
     direccion VARCHAR(200),
     telefono VARCHAR(25),
     localidad VARCHAR(100), 
-    fecha_nacimiento DATE,   
+    fecha_nacimiento DATE,
+    idRol INT DEFAULT 1, -- 1: cliente, 2: admin   
     estado BIT DEFAULT 1
 );
 GO
@@ -22,7 +26,8 @@ GO
 -- Tabla Categorias
 CREATE TABLE Categorias (
     idCategoria INT IDENTITY(1,1) PRIMARY KEY,
-    nombre VARCHAR(100) NOT NULL
+    nombre VARCHAR(100) NOT NULL,
+    estado BIT DEFAULT 1
     
 );
 GO
@@ -57,7 +62,7 @@ CREATE TABLE Pedidos (
     idCarrito INT NOT NULL,
     total DECIMAL(10, 2) NOT NULL,
     fecha_pedido DATETIME DEFAULT GETDATE(),
-    estado VARCHAR(20) NOT NULL DEFAULT 'pendiente',
+    idTipoPedido INT NOT NULL DEFAULT 1,
     direccion_envio VARCHAR(255),
     CONSTRAINT FK_Pedido_Usuario FOREIGN KEY (idUsuario) REFERENCES Usuarios(idUsuario) ,
     CONSTRAINT FK_Pedido_Carrito FOREIGN KEY (idCarrito) REFERENCES Carritos(idCarrito) 
@@ -94,15 +99,19 @@ CREATE TABLE Imagenes (
     CONSTRAINT FK_Imagenes_Articulo FOREIGN KEY (idArticulo) REFERENCES Articulos(idArticulo) 
 );
 GO
-
+create table tipoPedidos(
+    idTipoPedido int identity(1,1) primary key,
+    nombre varchar(50) not null,
+    estado bit default 1
+);
 
 
 -- INSERTs para la tabla Usuario
-INSERT INTO Usuarios (nombre, correo, clave, direccion, telefono, localidad, fecha_nacimiento, estado)
-VALUES ('Juan Perez', 'juan.perez@mail.com', 'clave123', 'Calle Falsa 123', '555-1234', 'Buenos Aires', '1985-05-10', 1);
+INSERT INTO Usuarios (nombre, correo, clave, direccion, telefono, localidad, fecha_nacimiento,idrol, estado)
+VALUES ('Juan Perez', 'juan.perez@mail.com', 'clave123', 'Calle Falsa 123', '555-1234', 'Buenos Aires', '1985-05-10',1, 1);
 
-INSERT INTO Usuarios (nombre, correo, clave, direccion, telefono, localidad, fecha_nacimiento, estado)
-VALUES ('Maria Lopez', 'maria.lopez@mail.com', 'clave456', 'Av. Siempre Viva 456', '555-5678', 'Cordoba', '1990-09-15', 1);
+INSERT INTO Usuarios (nombre, correo, clave, direccion, telefono, localidad, fecha_nacimiento,idrol, estado)
+VALUES ('Maria Lopez', 'maria.lopez@mail.com', 'clave456', 'Av. Siempre Viva 456', '555-5678', 'Cordoba', '1990-09-15',2, 1);
 GO
 
 -- INSERTs para la tabla Categorias
@@ -183,8 +192,12 @@ VALUES
 (13, 'https://acdn.mitiendanube.com/stores/906/459/products/italia1-e1ad25a33da28d316b16002239341759-480-0.jpg'),      -- remera de los 90's
 (14, 'https://m.media-amazon.com/images/I/41UVRe4k8LL._AC_SY580_.jpg'), --bufanda antigua
 (15, 'https://a.1stdibscdn.com/omega-1940s-retro-rose-gold-and-rubies-bracelet-watch-for-sale/j_94/j_221583921709072820347/j_22158392_1709072821766_bg_processed.jpg');        -- reloj pulsera retro
+go
+INSERT into tipoPedidos (nombre, estado) values
+('En Preparación', 1),
+('Enviado', 1),
+('Entregado', 1),
+('Cancelado', 1);
 
-ALTER TABLE Usuarios add IdRoll int NULL
 
-ALTER TABLE Usuarios
-ADD IdRol INT DEFAULT 0
+
