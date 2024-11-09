@@ -3,6 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <div class="row">
         <div class="col-6">
             <div class="mb-3">
@@ -26,9 +27,9 @@
                 <asp:DropDownList ID="ddlCategoria" CssClass="form-select" runat="server"></asp:DropDownList>
             </div>
             <div class="mb-3">
-                <asp:Button Text="Aceptar" ID="btnAceptar" CssClass="btn btn-primary" runat="server" />
-                <asp:Button Text ="Cancelar" ID="btnCancelar" CssClass="btn btn-danger" runat="server" />
-                <asp:Button Text="Inactivar" ID="btnInactivar" CssClass="btn btn-warning" runat="server" />
+                <asp:Button Text="Aceptar" ID="btnAceptar" CssClass="btn btn-primary" OnClick="btnAceptar_Click" runat="server" />
+                <asp:Button Text="Cancelar" ID="btnCancelar" CssClass="btn btn-danger" OnClick="btnCancelar_Click" runat="server" />
+                <asp:Label ID="lblError" runat="server" CssClass="text-danger" Visible="false"></asp:Label>
             </div>
         </div>
 
@@ -38,13 +39,17 @@
                 <asp:TextBox runat="server" TextMode="MultiLine" ID="txtDescripcion" CssClass="form-control" />
             </div>
             <div>
-                <div class="mb-3">
-                    <label for="txtImagenUrl" class="form-label">Url Imagen</label>
-                    <asp:TextBox runat="server" ID="txtImagenUrl" CssClass="form-control"
-                        AutoPostBack="true" />
-                </div>
-                <asp:Image ImageUrl="https://grupoact.com.ar/wp-content/uploads/2020/04/placeholder.png"
-                    runat="server" ID="imgPokemon" Width="60%" />
+                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                    <ContentTemplate>
+                        <div class="mb-3">
+                            <label for="txtImagenUrl" class="form-label">Url Imagen</label>
+                            <asp:TextBox runat="server" ID="txtImagenUrl" CssClass="form-control"
+                                AutoPostBack="true" OnTextChanged="txtImagenUrl_TextChanged" />
+                        </div>
+                        <asp:Image ImageUrl="https://grupoact.com.ar/wp-content/uploads/2020/04/placeholder.png"
+                            runat="server" ID="imgArticulo" Width="60%" />
+                    </ContentTemplate>
+                </asp:UpdatePanel>
             </div>
         </div>
     </div>

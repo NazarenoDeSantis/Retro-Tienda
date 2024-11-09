@@ -51,6 +51,40 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+        public List<Articulo> listarConSP()
+        {
+            List<Articulo> lista = new List<Articulo>();
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+
+                datos.setearProcedimiento("sp_ListarArticulos");
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Articulo aux = new Articulo();
+                    aux.Id = (int)datos.Lector["idArticulo"];
+                    aux.Nombre = (string)datos.Lector["nombre"];
+                    aux.Descripcion = (string)datos.Lector["descripcion"];
+                    aux.Precio = (decimal)datos.Lector["precio"];
+                    aux.Stock = (int)datos.Lector["stock"];
+                    aux.CategoriaId = (int)datos.Lector["categoria_id"];
+                    aux.UrlImagen = (string)datos.Lector["url"];
+                    lista.Add(aux);
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
         public List<Articulo> listarConSP(string sp, int categoriaID)
         {
             List<Articulo> lista = new List<Articulo>();
@@ -97,6 +131,31 @@ namespace Negocio
                 datos.setearParametro("@Precio", articulo.Precio);
                 datos.setearParametro("@Stock", articulo.Stock);
                 datos.setearParametro("@Categoria", articulo.CategoriaId);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Error al agregar el artículo: " + ex.Message);
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public void agregarConSP(Articulo articulo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearProcedimiento("SP_InsertarArticulo");
+                datos.setearParametro("@Nombre", articulo.Nombre);
+                datos.setearParametro("@Descripcion", articulo.Descripcion);
+                datos.setearParametro("@Precio", articulo.Precio);
+                datos.setearParametro("@Stock", articulo.Stock);
+                datos.setearParametro("@Categoria", articulo.CategoriaId);
+                datos.setearParametro("@UrlImagen", articulo.UrlImagen);
                 datos.ejecutarAccion();
             }
             catch (Exception ex)

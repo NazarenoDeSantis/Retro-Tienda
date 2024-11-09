@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <h1>Administrar Artículos</h1>
-    <asp:GridView ID="gvArticulos" runat="server" AutoGenerateColumns="False" CssClass="table table-striped table-bordered table-hover" HeaderStyle-CssClass="table-dark">
+    <asp:GridView ID="gvArticulos" runat="server" AutoGenerateColumns="False" CssClass="table table-striped table-bordered table-hover" OnSelectedIndexChanged="gvArticulos_SelectedIndexChanged" HeaderStyle-CssClass="table-dark">
         <Columns>
             <asp:BoundField DataField="Id" HeaderText="ID" ReadOnly="True" SortExpression="Id" />
             <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
@@ -18,7 +18,7 @@
     </asp:GridView>
      <div class="col">
      <asp:Button Text="Agregar" ID="btnAgregar" CssClass="btn btn-primary" OnClick="btnAgregar_Click" runat="server" />
-     <asp:Button Text ="Editar" ID="btnEditar" CssClass="btn btn-secondary" runat="server" />
-     <asp:Button Text="Eliminar" ID="btnEliminar" CssClass="btn btn-danger" runat="server" />
+     <asp:Button Text ="Editar" ID="btnEditar" CssClass="btn btn-secondary" OnClick="btnEditar_Click" runat="server" />
+     <asp:Button Text="Eliminar" ID="btnEliminar" CssClass="btn btn-danger" onclick="btnEliminar_Click" runat="server" />
  </div>
 </asp:Content>
