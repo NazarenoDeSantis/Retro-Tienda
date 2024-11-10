@@ -100,5 +100,22 @@ namespace TPFinal_Ecommerce_Grupo14B
         {
             imgArticulo.ImageUrl = txtImagenUrl.Text;
         }
+
+        protected void btnDeshabilitar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ArticuloNegocio negocio = new ArticuloNegocio();
+                negocio.eliminarLogicoConSP(int.Parse(txtId.Text));
+                Response.Redirect("/AdministrarArticulos.aspx");
+
+            }
+            catch (Exception ex)
+            {
+                Session.Add("Error", ex);
+
+                throw;
+            }
+        }
     }
 }

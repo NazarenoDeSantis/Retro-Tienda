@@ -12,14 +12,12 @@
             <asp:BoundField DataField="Descripcion" HeaderText="Descripcion" SortExpression="Descripcion" />
             <asp:BoundField DataField="Precio" HeaderText="Precio" SortExpression="Precio" />
             <asp:BoundField DataField="Stock" HeaderText="Stock" SortExpression="Stock" />
-            <asp:BoundField DataField="CategoriaId" HeaderText="Categoria" SortExpression="Categoria" />
-            <asp:BoundField DataField="Estado" HeaderText="Estado" SortExpression="Estado" />
+            <asp:BoundField DataField="CategoriaID" HeaderText="Categoria" SortExpression="Categoria" />
+            <asp:CheckBoxField HeaderText="Activo" DataField="Activo" SortExpression="Activo" />
             <asp:CommandField ShowSelectButton="true" SelectText="🎰" HeaderText="Accion"/>
         </Columns>
     </asp:GridView>
      <div class="col">
      <asp:Button Text="Agregar" ID="btnAgregar" CssClass="btn btn-primary" OnClick="btnAgregar_Click" runat="server" />
-     <asp:Button Text ="Editar" ID="btnEditar" CssClass="btn btn-secondary" OnClick="btnEditar_Click" runat="server" />
-     <asp:Button Text="Eliminar" ID="btnEliminar" CssClass="btn btn-danger" onclick="btnEliminar_Click" runat="server" />
  </div>
 </asp:Content>

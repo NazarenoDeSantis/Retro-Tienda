@@ -27,8 +27,13 @@
                 <asp:DropDownList ID="ddlCategoria" CssClass="form-select" runat="server"></asp:DropDownList>
             </div>
             <div class="mb-3">
+                <label for="ddlCategoria" class="form-label">Categoria: </label>
+                
+            </div>
+            <div class="mb-3">
                 <asp:Button Text="Aceptar" ID="btnAceptar" CssClass="btn btn-primary" OnClick="btnAceptar_Click" runat="server" />
                 <asp:Button Text="Cancelar" ID="btnCancelar" CssClass="btn btn-danger" OnClick="btnCancelar_Click" runat="server" />
+                <asp:Button Text="Deshabilitar" ID="btnDeshabilitar" CssClass="btn btn-warning" OnClick="btnDeshabilitar_Click" runat="server" />
                 <asp:Label ID="lblError" runat="server" CssClass="text-danger" Visible="false"></asp:Label>
             </div>
         </div>

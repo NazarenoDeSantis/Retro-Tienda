@@ -71,6 +71,8 @@ namespace Negocio
                     aux.Stock = (int)datos.Lector["stock"];
                     aux.CategoriaId = (int)datos.Lector["categoria_id"];
                     aux.UrlImagen = (string)datos.Lector["url"];
+                    aux.Activo = bool.Parse(datos.Lector["estado"].ToString());
+
                     lista.Add(aux);
                 }
                 return lista;
@@ -217,7 +219,7 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
-        public void elimiar(int id)
+        public void eliminar(int id)
         {
             AccesoDatos datos = new AccesoDatos();
             try
@@ -236,14 +238,13 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
-        public void eliminarLogico(int id, bool estado = false)
+        public void eliminarLogicoConSP(int id)
         {
             try
             {
                 AccesoDatos datos = new AccesoDatos();
-                datos.setearConsulta("update Articulos set estado = @estado Where id = @id");
-                datos.setearParametro("@id", id);
-                datos.setearParametro("@estado", estado);
+                datos.setearProcedimiento("SP_BajaLogicaArticulo");
+                datos.setearParametro("@idArticulo", id);
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
