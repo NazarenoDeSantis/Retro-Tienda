@@ -11,15 +11,15 @@ using System.Data.SqlClient;
 namespace TPFinal_Ecommerce_Grupo14B
 {
     public partial class FormularioArticulo : System.Web.UI.Page
-    {   
+    {
         ArticuloNegocio negocio = new ArticuloNegocio();
         protected void Page_Load(object sender, EventArgs e)
         {
             txtId.Enabled = false;
-            
+
             try
             {
-                if(!IsPostBack)
+                if (!IsPostBack)
                 {
                     CategoriaNegocio negocio = new CategoriaNegocio();
                     List<Categoria> lista = negocio.listar();
@@ -31,25 +31,33 @@ namespace TPFinal_Ecommerce_Grupo14B
                 }
 
                 //config si estamos modificando
-                               
-                    
-                    string id = Request.QueryString["id"] != null ? Request.QueryString["id"].ToString() : "";
-                    if (!string.IsNullOrEmpty(id) && !IsPostBack)
+
+
+                string id = Request.QueryString["id"] != null ? Request.QueryString["id"].ToString() : "";
+                if (!string.IsNullOrEmpty(id) && !IsPostBack)
+                {
+                    Articulo articulo = negocio.listarConSP().Find(x => x.Id == int.Parse(id));
+                    if (articulo != null)
                     {
-                        Articulo articulo = negocio.listarConSP().Find(x => x.Id == int.Parse(id));
-                        if (articulo != null)
+                        txtId.Text = articulo.Id.ToString();
+                        txtNombre.Text = articulo.Nombre;
+                        txtDescripcion.Text = articulo.Descripcion;
+                        txtPrecio.Text = articulo.Precio.ToString();
+                        txtStock.Text = articulo.Stock.ToString();
+                        ddlCategoria.SelectedValue = articulo.CategoriaId.ToString();
+                        txtImagenUrl.Text = articulo.UrlImagen;
+                        imgArticulo.ImageUrl = articulo.UrlImagen;
+
+                        if (!articulo.Activo)
                         {
-                            txtId.Text = articulo.Id.ToString();
-                            txtNombre.Text = articulo.Nombre;
-                            txtDescripcion.Text = articulo.Descripcion;
-                            txtPrecio.Text = articulo.Precio.ToString();
-                            txtStock.Text = articulo.Stock.ToString();
-                            ddlCategoria.SelectedValue = articulo.CategoriaId.ToString();
-                            txtImagenUrl.Text = articulo.UrlImagen;
-                            imgArticulo.ImageUrl = articulo.UrlImagen;
+                            btnDeshabilitar.Text = "Reactivar";
+
                         }
                     }
-          
+
+
+                }
+
             }
 
             catch (Exception ex)
@@ -71,7 +79,7 @@ namespace TPFinal_Ecommerce_Grupo14B
                 articulo.CategoriaId = int.Parse(ddlCategoria.SelectedValue);
                 articulo.UrlImagen = txtImagenUrl.Text;
 
-                if(Request.QueryString["id"] != null)
+                if (Request.QueryString["id"] != null)
                 {
                     articulo.Id = int.Parse(txtId.Text);
                     negocio.modificarConSP(articulo);
@@ -105,8 +113,22 @@ namespace TPFinal_Ecommerce_Grupo14B
         {
             try
             {
+                
                 ArticuloNegocio negocio = new ArticuloNegocio();
-                negocio.eliminarLogicoConSP(int.Parse(txtId.Text));
+
+                if(btnDeshabilitar.Text == "Reactivar")
+                {
+                    negocio.ReactivacionLogicaConSP(int.Parse(txtId.Text));
+                    Response.Redirect("/AdministrarArticulos.aspx");
+                }
+                else
+
+                {
+                    negocio.bajaLogicaConSP(int.Parse(txtId.Text));
+                }    
+                
+                
+                
                 Response.Redirect("/AdministrarArticulos.aspx");
 
             }

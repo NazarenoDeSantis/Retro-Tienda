@@ -238,12 +238,26 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
-        public void eliminarLogicoConSP(int id)
+        public void bajaLogicaConSP(int id)
         {
             try
             {
                 AccesoDatos datos = new AccesoDatos();
                 datos.setearProcedimiento("SP_BajaLogicaArticulo");
+                datos.setearParametro("@idArticulo", id);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public void ReactivacionLogicaConSP(int id)
+        {
+            try
+            {
+                AccesoDatos datos = new AccesoDatos();
+                datos.setearProcedimiento("SP_ReactivacionLogicaArticulo");
                 datos.setearParametro("@idArticulo", id);
                 datos.ejecutarAccion();
             }
