@@ -24,11 +24,18 @@ namespace TPFinal_Ecommerce_Grupo14B
 
         void cargarArticulos()
         {
+            /*
             List<Articulo> lista = new List<Articulo>();
             
             lista = negocio.listarConSP();
             gvArticulos.DataSource = lista;
+            gvArticulos.DataBind();*/
+
+            List<Articulo> lista = new List<Articulo>();
+            Session.Add("listaArticulos", negocio.listarConSP());
+            gvArticulos.DataSource = Session["listaArticulos"];
             gvArticulos.DataBind();
+
         }
 
         protected void btnAgregar_Click(object sender, EventArgs e)
@@ -52,6 +59,14 @@ namespace TPFinal_Ecommerce_Grupo14B
             string id = gvArticulos.SelectedDataKey.Value.ToString();
  
             Response.Redirect("/FormularioArticulo.aspx?id=" + id);
+        }
+
+        protected void txtFiltro_TextChanged(object sender, EventArgs e)
+        {
+            List<Articulo> lista = (List<Articulo>)Session["listaArticulos"];
+            List<Articulo> listaFiltrada = lista.FindAll(x => x.Nombre.ToUpper().Contains(txtFiltro.Text.ToUpper()));
+            gvArticulos.DataSource = listaFiltrada;
+            gvArticulos.DataBind();
         }
     }
 }
