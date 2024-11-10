@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <h1>Administrar Artículos</h1>
-    <asp:GridView ID="gvArticulos" runat="server" AutoGenerateColumns="False" CssClass="table table-striped table-bordered table-hover" OnSelectedIndexChanged="gvArticulos_SelectedIndexChanged" HeaderStyle-CssClass="table-dark">
+    <asp:GridView ID="gvArticulos" runat="server" DataKeyNames="Id" AutoGenerateColumns="False" CssClass="table table-striped table-bordered table-hover" OnSelectedIndexChanged="gvArticulos_SelectedIndexChanged" HeaderStyle-CssClass="table-dark">
         <Columns>
             <asp:BoundField DataField="Id" HeaderText="ID" ReadOnly="True" SortExpression="Id" />
             <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
@@ -14,6 +14,7 @@
             <asp:BoundField DataField="Stock" HeaderText="Stock" SortExpression="Stock" />
             <asp:BoundField DataField="CategoriaId" HeaderText="Categoria" SortExpression="Categoria" />
             <asp:BoundField DataField="Estado" HeaderText="Estado" SortExpression="Estado" />
+            <asp:CommandField ShowSelectButton="true" SelectText="🎰" HeaderText="Accion"/>
         </Columns>
     </asp:GridView>
      <div class="col">

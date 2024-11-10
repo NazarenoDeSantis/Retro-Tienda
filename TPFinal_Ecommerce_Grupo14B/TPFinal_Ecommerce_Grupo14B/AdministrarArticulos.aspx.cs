@@ -39,6 +39,7 @@ namespace TPFinal_Ecommerce_Grupo14B
         protected void btnEditar_Click(object sender, EventArgs e)
         {
 
+
         }
 
         protected void btnEliminar_Click(object sender, EventArgs e)
@@ -49,6 +50,7 @@ namespace TPFinal_Ecommerce_Grupo14B
         protected void gvArticulos_SelectedIndexChanged(object sender, EventArgs e)
         {
             string id = gvArticulos.SelectedDataKey.Value.ToString();
+ 
             Response.Redirect("/FormularioArticulo.aspx?id=" + id);
         }
     }

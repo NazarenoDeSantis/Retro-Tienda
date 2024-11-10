@@ -11,22 +11,47 @@ using System.Data.SqlClient;
 namespace TPFinal_Ecommerce_Grupo14B
 {
     public partial class FormularioArticulo : System.Web.UI.Page
-    {
+    {   
         ArticuloNegocio negocio = new ArticuloNegocio();
         protected void Page_Load(object sender, EventArgs e)
         {
             txtId.Enabled = false;
+            
             try
             {
-                CategoriaNegocio negocio = new CategoriaNegocio();
-                List<Categoria> lista = negocio.listar();
+                if(!IsPostBack)
+                {
+                    CategoriaNegocio negocio = new CategoriaNegocio();
+                    List<Categoria> lista = negocio.listar();
 
-                ddlCategoria.DataSource = lista;
-                ddlCategoria.DataTextField = "Nombre";
-                ddlCategoria.DataValueField = "Id";
-                ddlCategoria.DataBind();
+                    ddlCategoria.DataSource = lista;
+                    ddlCategoria.DataTextField = "Nombre";
+                    ddlCategoria.DataValueField = "Id";
+                    ddlCategoria.DataBind();
+                }
 
+                //config si estamos modificando
+                               
+                    
+                    string id = Request.QueryString["id"] != null ? Request.QueryString["id"].ToString() : "";
+                    if (!string.IsNullOrEmpty(id) && !IsPostBack)
+                    {
+                        Articulo articulo = negocio.listarConSP().Find(x => x.Id == int.Parse(id));
+                        if (articulo != null)
+                        {
+                            txtId.Text = articulo.Id.ToString();
+                            txtNombre.Text = articulo.Nombre;
+                            txtDescripcion.Text = articulo.Descripcion;
+                            txtPrecio.Text = articulo.Precio.ToString();
+                            txtStock.Text = articulo.Stock.ToString();
+                            ddlCategoria.SelectedValue = articulo.CategoriaId.ToString();
+                            txtImagenUrl.Text = articulo.UrlImagen;
+                            imgArticulo.ImageUrl = articulo.UrlImagen;
+                        }
+                    }
+          
             }
+
             catch (Exception ex)
             {
                 Session.Add("Error", ex);
@@ -46,7 +71,15 @@ namespace TPFinal_Ecommerce_Grupo14B
                 articulo.CategoriaId = int.Parse(ddlCategoria.SelectedValue);
                 articulo.UrlImagen = txtImagenUrl.Text;
 
-                negocio.agregarConSP(articulo);
+                if(Request.QueryString["id"] != null)
+                {
+                    articulo.Id = int.Parse(txtId.Text);
+                    negocio.modificarConSP(articulo);
+                }
+                else
+                {
+                    negocio.agregarConSP(articulo);
+                }
 
                 Response.Redirect("/AdministrarArticulos.aspx");
 
