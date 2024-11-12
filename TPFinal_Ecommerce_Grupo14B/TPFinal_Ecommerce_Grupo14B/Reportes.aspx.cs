@@ -18,64 +18,48 @@ namespace TPFinal_Ecommerce_Grupo14B
         {
             if (!IsPostBack)
             {
-                CargarCategoria();
+                ListarCategorias();
             }
         }
 
-        public void CargarCategoria()
+        private void ListarCategorias(string filtro = "")
         {
-            try
+            // Obtenemos la lista de categorías del negocio
+            List<Categoria> listaCategorias = negocio.listar();
+
+            // Si el filtro no está vacío, filtramos las categorías por el nombre
+            if (!string.IsNullOrEmpty(filtro))
             {
-                List<Categoria> lista = negocio.listar();
-                gvCategoria.DataSource = lista;
-                gvCategoria.DataBind();
+                // Filtramos las categorías por nombre (en minúsculas) para que no importe el caso
+                listaCategorias = listaCategorias.FindAll(c => c.Nombre.ToLower().Contains(filtro));
             }
-            catch (Exception ex)
-            {
-                lblError.Text = "Error: " + ex.Message;
-                lblError.CssClass = "text-danger";
-            }
+
+            // Asignamos la lista de categorías al GridView
+            gvCategoria.DataSource = listaCategorias;
+            gvCategoria.DataBind();
         }
 
-       
-            
+
 
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
-            categoria.Nombre = txtNombreCategoria.Text.Trim();
-           // string nombreCategoria = txtNombreCategoria.Text.Trim();
-            try
-            {
-               
-                if (string.IsNullOrEmpty(categoria.Nombre))
-                {
-                    // Aquí puedes agregar un mensaje de error si el nombre está vacío
-                    lblError.Visible = true;
-                    lblError.Text = "El nombre de la categoría no puede estar vacío.";
-                    return;
-                }
-
-               // Categoria nuevaCategoria = new Categoria();
-               // nuevaCategoria.Nombre = txtNombreCategoria.Text;
-               
-
-                // Llamar al método de negocio para agregar la categoría
-                negocio.agregar(categoria);
-
-                // Limpiar el campo de texto
-                txtNombreCategoria.Text = string.Empty;
-
-                // Actualizar el GridView con la lista más reciente
-                CargarCategoria();
-            }
-            catch (Exception ex)
-            {
-                // Aquí puedes manejar el error, como mostrar un mensaje en un Label
-                lblError.Visible = true;
-                lblError.Text =  ex.Message;
-            }
+            Response.Redirect("/FormularioCategoria.aspx");
         }
 
-        
+        protected void txtFiltro_TextChanged(object sender, EventArgs e)
+        {
+            string filtro = txtFiltro.Text.ToLower();
+            ListarCategorias(filtro);
+        }
+
+        protected void gvCategoria_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnEditar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/FormularioCategoria.aspx");
+        }
     }
 }

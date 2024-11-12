@@ -16,7 +16,7 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("select idCategoria, nombre from Categorias");
+                datos.setearConsulta("select idCategoria, nombre, estado from Categorias");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -24,6 +24,7 @@ namespace Negocio
                     Categoria aux = new Categoria();
                     aux.Id = (int)datos.Lector["idCategoria"];
                     aux.Nombre = (string)datos.Lector["Nombre"];
+                    aux.Activo = bool.Parse(datos.Lector["estado"].ToString());
 
                     lista.Add(aux);
                 }
@@ -41,98 +42,98 @@ namespace Negocio
             return lista;
         }
 
-        public void agregar(Categoria categoria)
-        {
-            AccesoDatos datos = new AccesoDatos();
+        /* public void verificarDuplicado(Categoria categoria)
+         {
+             AccesoDatos datos = new AccesoDatos();
+             try
+             {
+                 datos.setearConsulta("SELECT COUNT(*) FROM Categorias WHERE nombre = @nombre");
+                 datos.setearParametro("@nombre", categoria.Nombre);
+                 int cantidad = (int)datos.ejecutarAccionScalar();
 
-            try
-            {
-                datos.setearConsulta("SELECT COUNT(*) FROM Categorias WHERE nombre = @nombre");
-                datos.setearParametro("@nombre", categoria.Nombre);
-                int cantidad = (int)datos.ejecutarAccionScalar();
+                 if (cantidad > 0)
+                 {
+                     throw new Exception($"Ya existe una CATEGORÍAS con nombre '{categoria.Nombre}' en la base de datos.");
 
-                if(cantidad >0)
-                {
-                   throw new Exception($"Ya existe una CATEGORÍAS con nombre '{categoria.Nombre}' en la base de datos.");
+                 }
+             }
+             catch (Exception)
+             {
 
-                }
-                else 
-                {
-                    datos.setearConsulta("INSERT INTO Categorias (nombre) VALUES(@nombre)");
-                    datos.setearParametro("@nombre", categoria.Nombre);
-                    datos.ejecutarAccion();
-                   
-                }
-               
-            }
-            catch (Exception ex )
-            {
+                 throw;
+             }
+             finally
+             {
+                 datos.cerrarConexion();
+             }
+         }
 
-                throw new Exception("Error al agregar la Categoría : " + ex.Message) ;
-            }
-            finally
-            {
-                datos.cerrarConexion();
-            }
-        }
+         public void agregar(Categoria categoria)
+         {
+             AccesoDatos datos = new AccesoDatos();
 
-        public void eliminar(int id)
-        {
-            AccesoDatos datos = new AccesoDatos();
-            try
-            {
-                datos.setearConsulta(" DELETE FROM Categorias WHERE idCategoria = @id");
-                datos.setearParametro("id", id);
-                datos.ejecutarAccion();
-            }
-            catch (Exception ex)
-            {
+             try
+             {
 
-                throw ex;
-            }
-            finally
-            {
-                datos.cerrarConexion();
-            }
+                 datos.setearConsulta("INSERT INTO Categorias (nombre) VALUES(@nombre)");
+                 datos.setearParametro("@nombre", categoria.Nombre);
+                 datos.ejecutarAccion();
 
-        }
+             }
+             catch (Exception ex)
+             {
 
-        public void modificar (Categoria categoria)
-        {
-            AccesoDatos datos = new AccesoDatos();
+                 throw new Exception("Error al agregar la Categoría : " + ex.Message);
+             }
+             finally
+             {
+                 datos.cerrarConexion();
+             }
+         }
 
-            try
-            {
-                datos.setearConsulta("SELECT COUNT (*) FROM Categorias WHERE nombre = @nombre AND idCategoria <> @id");
-                datos.setearParametro("@nombre", categoria.Nombre);
-                datos.setearParametro("@id", categoria.Id);
+         public void eliminar(int id)
+         {
+             AccesoDatos datos = new AccesoDatos();
+             try
+             {
+                 datos.setearConsulta(" DELETE FROM Categorias WHERE idCategoria = @id");
+                 datos.setearParametro("id", id);
+                 datos.ejecutarAccion();
+             }
+             catch (Exception ex)
+             {
 
-                int cantidad = (int)datos.ejecutarAccionScalar();
+                 throw ex;
+             }
+             finally
+             {
+                 datos.cerrarConexion();
+             }
 
-                if(cantidad > 0)
-                {
-                    throw new Exception($"Ya existe una Categoria con el nombre '{categoria.Nombre}' en la base de datos. ");
-                }
-                else
-                {
-                    datos.setearConsulta("UPDATE Categorias SET nombre = @nombre WHERE idCategoria = @id");
-                    datos.setearParametro("@nombre", categoria.Nombre);
-                    datos.setearParametro("@id", categoria.Id);
-                    datos.ejecutarAccion();
-                }
-            }
-            catch (Exception ex)
-            {
+         }
 
-                throw new Exception("Error al modificar la Categoria " + ex.Message) ;
-            }
-            finally
-            {
-                if (datos != null)
-                {
-                    datos.cerrarConexion();
-                }
-            }
-        }
+         public void modificar(Categoria categoria)
+         {
+             AccesoDatos datos = new AccesoDatos();
+
+             try
+             {
+                 datos.setearConsulta("UPDATE Categorias SET nombre = @nombre WHERE idCategoria = @id");
+                 datos.setearParametro("@nombre", categoria.Nombre);
+                 datos.setearParametro("@id", categoria.Id);
+                 datos.ejecutarAccion();
+
+             }
+             catch (Exception ex)
+             {
+
+                 throw new Exception("Error al agregar la Categoría : " + ex.Message);
+             }
+             finally
+             {
+                 datos.cerrarConexion();
+             }
+         }*/
     }
 }
+
