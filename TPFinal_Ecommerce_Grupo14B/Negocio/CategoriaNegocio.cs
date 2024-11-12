@@ -47,10 +47,22 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("INSERT INTO Categorias (nombre) VALUES (@nombre)");
+                datos.setearConsulta("SELECT COUNT(*) FROM Categorias WHERE nombre = @nombre");
                 datos.setearParametro("@nombre", categoria.Nombre);
-                datos.ejecutarAccion();
+                int cantidad = (int)datos.ejecutarAccionScalar();
 
+                if(cantidad >0)
+                {
+                   throw new Exception($"Ya existe una CATEGORÍAS con nombre '{categoria.Nombre}' en la base de datos.");
+
+                }
+                else 
+                {
+                    datos.setearConsulta("INSERT INTO Categorias (nombre) VALUES(@nombre)");
+                    datos.setearParametro("@nombre", categoria.Nombre);
+                    datos.ejecutarAccion();
+                   
+                }
                
             }
             catch (Exception ex )
