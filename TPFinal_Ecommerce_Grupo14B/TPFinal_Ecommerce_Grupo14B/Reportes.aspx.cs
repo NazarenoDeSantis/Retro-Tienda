@@ -12,7 +12,7 @@ namespace TPFinal_Ecommerce_Grupo14B
     public partial class Reportes : System.Web.UI.Page
     {
         CategoriaNegocio negocio = new CategoriaNegocio();
-        Categoria categoria = new Categoria();
+       
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -40,12 +40,6 @@ namespace TPFinal_Ecommerce_Grupo14B
         }
 
 
-
-        protected void btnAgregar_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("/FormularioCategoria.aspx");
-        }
-
         protected void txtFiltro_TextChanged(object sender, EventArgs e)
         {
             string filtro = txtFiltro.Text.ToLower();
@@ -54,12 +48,15 @@ namespace TPFinal_Ecommerce_Grupo14B
 
         protected void gvCategoria_SelectedIndexChanged(object sender, EventArgs e)
         {
+            int idCategoria = Convert.ToInt32(gvCategoria.SelectedDataKey.Value);
 
+            Response.Redirect("FormularioCategoria.aspx?id=" + idCategoria);
         }
 
-        protected void btnEditar_Click(object sender, EventArgs e)
+        protected void btnAgregar_Click(object sender, EventArgs e)
         {
             Response.Redirect("/FormularioCategoria.aspx");
         }
     }
 }
+

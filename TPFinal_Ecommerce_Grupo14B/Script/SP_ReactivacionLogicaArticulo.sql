@@ -1,8 +1,8 @@
-create procedure SP_ReactivacionLogicaArticulo
+create procedure SP_ReactivacionCategoria
 -- Get a list of tables and views in the current database
-@idArticulo int
+@nombre varchar
 as
 begin
-update Articulos set estado = 1 where idArticulo = @idArticulo
+update Categorias set estado = 1 where nombre = @nombre
 end
 GO

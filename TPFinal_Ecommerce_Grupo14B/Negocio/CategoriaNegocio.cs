@@ -42,7 +42,7 @@ namespace Negocio
             return lista;
         }
 
-        /* public void verificarDuplicado(Categoria categoria)
+         public void verificarDuplicado(Categoria categoria)
          {
              AccesoDatos datos = new AccesoDatos();
              try
@@ -90,7 +90,7 @@ namespace Negocio
                  datos.cerrarConexion();
              }
          }
-
+        
          public void eliminar(int id)
          {
              AccesoDatos datos = new AccesoDatos();
@@ -112,6 +112,38 @@ namespace Negocio
 
          }
 
+        public void bajaLogicaConSP(int id)
+        {
+            try
+            {
+                AccesoDatos datos = new AccesoDatos();
+                datos.setearProcedimiento("SP_BajaLogicaCategoria");
+                datos.setearParametro("@idCategoria", id);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+
+        public void ReactivacionLogicaConSP(int id)
+        {
+            try
+            {
+                AccesoDatos datos = new AccesoDatos();
+                datos.setearProcedimiento("SP_ReactivacionLogicaCategoria");
+                datos.setearParametro("@idCategoria", id);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        
          public void modificar(Categoria categoria)
          {
              AccesoDatos datos = new AccesoDatos();
@@ -133,7 +165,7 @@ namespace Negocio
              {
                  datos.cerrarConexion();
              }
-         }*/
+         }
     }
 }
 

@@ -28,7 +28,7 @@
         </ContentTemplate>
     </asp:UpdatePanel>
     <div class="col">
-        <asp:Button Text="Editar" ID="btnEditar" CssClass="btn btn-primary" OnClick="btnEditar_Click" runat="server" />
+        <asp:Button Text="Agregar" ID="btnAgregar" CssClass="btn btn-primary" OnClick="btnAgregar_Click" runat="server" />
     </div>
 
 

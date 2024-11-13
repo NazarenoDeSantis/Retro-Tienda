@@ -1,8 +1,8 @@
-create procedure SP_BajaLogicaArticulo
+create procedure SP_BajaLCategoria
 -- Get a list of tables and views in the current database
-@idArticulo int
+@id int
 as
 begin
-update Articulos set estado = 0 where idArticulo = @idArticulo
+update Categorias set estado = 0 where idCategoria = @id
 end
 GO
