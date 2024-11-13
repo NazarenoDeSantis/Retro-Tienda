@@ -166,6 +166,26 @@ namespace Negocio
                  datos.cerrarConexion();
              }
          }
+
+        public void modificarConSP(Categoria categoria)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearProcedimiento("SP_ModificarCategoria");
+                datos.setearParametro("@Nombre", categoria.Nombre);
+                datos.setearParametro("@Id", categoria.Id);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
 }
 

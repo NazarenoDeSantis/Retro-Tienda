@@ -58,8 +58,18 @@ namespace TPFinal_Ecommerce_Grupo14B
                     lblError.Text = "No puede agregar un nombre Vacio" ;
                     return;
                 }
-                negocio.verificarDuplicado(categoria);
-                negocio.agregar(categoria);
+               
+                if (Request.QueryString["id"] != null)
+                {
+                    categoria.Id = int.Parse(txtId.Text);
+                    negocio.verificarDuplicado(categoria);
+                    negocio.modificarConSP(categoria);
+                }
+                else
+                {
+                    negocio.agregar(categoria);
+                }
+                
                 Response.Redirect("Reportes.aspx");
 
 
