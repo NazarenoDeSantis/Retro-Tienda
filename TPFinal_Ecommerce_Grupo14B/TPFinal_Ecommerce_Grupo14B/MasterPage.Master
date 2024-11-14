@@ -2,7 +2,7 @@
 
 <!DOCTYPE html>
 
-<html>
+<html data-bs-theme="light">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>E - COMMERCE</title>
@@ -15,8 +15,6 @@
 </head>
 <body>
     <form id="form1" runat="server">
-
-
         <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
             <div class="container-fluid">
                 <a class="navbar-brand" href="Default.aspx">
@@ -47,7 +45,7 @@
                         <li class="nav-item">
                             <a class="nav-link " aria-current="page" href="/MiCuenta.aspx">Mi Cuenta</a>
                         </li>
-                        
+
                         <li class="nav-item">
                             <a class="nav-link " aria-current="page" href="/Reportes.aspx">Administrar Categorias</a>
                         </li>
@@ -61,9 +59,10 @@
                             <a class="nav-link " aria-current="page" href="/AdministrarUsuarios.aspx">Administar Usuarios</a>
                         </li>
                     </ul>
-                    <div class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Buscador rápido" aria-label="search">
-                        <button class="btn btn-outline-success" type="submit">Buscar</button>
+                    <div class="d-flex">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">    
+                        </div>
                     </div>
                 </div>
             </div>
@@ -75,11 +74,11 @@
             </asp:ContentPlaceHolder>
         </div>
 
-        <footer class="bg-light text-center py-3 mt-auto">
+        <footer id="pageFooter" class="bg-light text-center py-3 mt-auto">
             <hr />
             <h6 class="mb-0">Proyecto realizado por el Equipo 14B</h6>
         </footer>
     </form>
+    <script src="js/scripts.js"></script>
 </body>
 </html>
-<%-- comentario de prueba porque no sube el commit --%>

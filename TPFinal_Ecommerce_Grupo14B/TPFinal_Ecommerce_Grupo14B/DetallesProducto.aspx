@@ -2,43 +2,33 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
-
     <div class="container mt-5">
-        
         <div class="row">
             <div class="col-md-6">
                 <!-- Imagen del Producto -->
-                <img src="Images/indumentaria1.jpg" class="img-fluid" alt="Imagen del Producto">
+                <asp:Image ID="imgProducto" runat="server" CssClass="img-fluid product-image" Width="414" Height="320" AlternateText='<%# Eval("Nombre") %>' ImageUrl='<%# Eval("UrlImagen") %>' />
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 product-details">
                 <!-- Información del Producto -->
-                <h2>Remera estampa 90'</h2>
-                <p class="text-muted">Código del producto: #12345</p>
-
-
-                <p class="mt-3">Remera retro con temática Gamer de los años 90', unisex, talle único</p>
-
-                <!-- Precio -->
-                <h3 class="mt-3 text-success">$199.99</h3>
-
-
+                <div>
+                    <asp:Label ID="lblNombre" runat="server" CssClass="product-name"><%# Eval("Nombre") %></asp:Label>
+                </div>
+                <div class="mt-2">
+                    <asp:Label ID="lblDescripcion" CssClass="product-description" runat="server"><%# Eval("Descripcion") %></asp:Label>
+                </div>
+                <div class="mt-3">
+                    <!-- Precio -->
+                    <asp:Label ID="lblPrecio" CssClass="product-price" runat="server" Text='<%# "Precio: $" + Eval("Precio") %>'></asp:Label>
+                </div>
                 <div class="mt-4">
                     <label for="cantidad" class="form-label">Cantidad</label>
-                    <asp:TextBox runat="server" ID="txtCantidad" CssClass="form-control w-25" />
+                    <asp:TextBox runat="server" ID="txtCantidad" CssClass="form-control w-50" />
                     <asp:Button Text="Agregar al Carrito" runat="server" ID="btnAgregarCarrito" CssClass="btn btn-primary mt-3 w-100" OnClick="btnAgregarCarrito_Click" />
                 </div>
                 <div class="mt-4">
-                    <h5>Características:</h5>
-                    <ul>
-                        <li>Material: Algodón 100%</li>
-                        <li>Color: Negro</li>
-                        <li>Medidas: Ancho: 56cm, Largo: 73cm </li>
-                    </ul>
-                </div>
-                <div class="mt-3">
-                    <a href="CatalogoIndumentaria.aspx" class="link-primary">Volver a la tienda</a>
+                    <a href="Productos.aspx" class="back-link">← Volver a la tienda</a>
                 </div>
             </div>
         </div>

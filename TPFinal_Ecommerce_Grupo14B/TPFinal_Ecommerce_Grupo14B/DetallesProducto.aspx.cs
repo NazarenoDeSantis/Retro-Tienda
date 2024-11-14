@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Dominio;
+using Negocio;
+using System;
 using System.Collections.Generic;
+using System.EnterpriseServices;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -11,9 +14,33 @@ namespace TPFinal_Ecommerce_Grupo14B
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                // Recupera el id desde la sesión
+                string id = Session["ProductoId"] as string;
+                
 
+                if (!string.IsNullOrEmpty(id))
+                {
+                    // Usa el id como necesites, por ejemplo, cargar detalles del producto
+                    CargaDetallesProducto(id);
+                }
+                else
+                {
+                    Response.Write("No se encontró el ID del producto en la sesión.");
+                }
+            }
         }
-
+        public void CargaDetallesProducto(string id)
+        {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            Articulo articulo = negocio.listarConSP().Find(x => x.Id == Convert.ToInt32(id));
+            lblNombre.Text = articulo.Nombre;
+            //lblID.Text = articulo.Id.ToString();
+            lblDescripcion.Text = articulo.Descripcion;
+            lblPrecio.Text = articulo.Precio.ToString();
+            imgProducto.ImageUrl = articulo.UrlImagen;
+        }
         protected void btnAgregarCarrito_Click(object sender, EventArgs e)
         {
             Response.Redirect("Carrito.aspx");

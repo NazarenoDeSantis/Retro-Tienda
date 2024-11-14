@@ -84,8 +84,11 @@
     <Content Include="Images\indumentaria1.jpg" />
     <Content Include="Images\logo.png.png" />
     <Content Include="Images\wallpapper.jpeg" />
+    <Content Include="js\scripts.js" />
+    <Content Include="js\sweetAlert.js" />
     <Content Include="MiCuenta.aspx" />
     <Content Include="Pagos.aspx" />
+    <Content Include="Productos.aspx" />
     <Content Include="RecuperarContrasenia.aspx" />
     <Content Include="Registro.aspx" />
     <Content Include="Reportes.aspx" />
@@ -186,6 +189,13 @@
     </Compile>
     <Compile Include="Pagos.aspx.designer.cs">
       <DependentUpon>Pagos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Productos.aspx.cs">
+      <DependentUpon>Productos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Productos.aspx.designer.cs">
+      <DependentUpon>Productos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RecuperarContrasenia.aspx.cs">

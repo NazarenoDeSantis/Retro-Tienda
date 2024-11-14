@@ -9,7 +9,62 @@
     position: relative;
 }*/
 
+.product-details {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
+.product-image {
+    border-radius: 8px;
+}
+
+.product-name {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.product-description {
+    font-size: 1.2rem;
+    color: #555;
+}
+
+.product-price {
+    font-size: 1.8rem;
+    color: #28a745;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.btn-primary:hover {
+    background-color: #0069d9;
+    transform: scale(1.02);
+    transition: all 0.2s ease-in-out;
+}
+
+.back-link {
+    font-size: 1.1rem;
+    text-decoration: none;
+    color: #007bff;
+}
+
+    .back-link:hover {
+        text-decoration: underline;
+        color: #0056b3;
+    }
+
+/* Estilos para el footer en modo claro y oscuro */
+.footer-light {
+    background-color: #f8f9fa; /* Claro */
+    color: #212529;
+}
+
+.footer-dark {
+    background-color: #212529; /* Oscuro */
+    color: #f8f9fa;
+}
 
 
 

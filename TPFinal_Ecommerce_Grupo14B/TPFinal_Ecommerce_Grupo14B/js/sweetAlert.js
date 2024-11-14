@@ -1,0 +1,3 @@
+﻿swal.fire({
+    title: 'Bienvenido'
+});
