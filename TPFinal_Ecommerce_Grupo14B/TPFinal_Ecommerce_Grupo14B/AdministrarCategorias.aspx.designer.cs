@@ -11,7 +11,7 @@ namespace TPFinal_Ecommerce_Grupo14B
 {
 
 
-    public partial class AdministrarArticulos
+    public partial class Reportes
     {
 
         /// <summary>
@@ -33,13 +33,13 @@ namespace TPFinal_Ecommerce_Grupo14B
         protected global::System.Web.UI.WebControls.TextBox txtFiltro;
 
         /// <summary>
-        /// Control gvArticulos.
+        /// Control gvCategoria.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvArticulos;
+        protected global::System.Web.UI.WebControls.GridView gvCategoria;
 
         /// <summary>
         /// Control btnAgregar.

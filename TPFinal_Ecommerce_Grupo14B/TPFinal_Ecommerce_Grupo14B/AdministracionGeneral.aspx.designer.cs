@@ -11,43 +11,52 @@ namespace TPFinal_Ecommerce_Grupo14B
 {
 
 
-    public partial class Reportes
+    public partial class AdministracionGeneral
     {
 
         /// <summary>
-        /// Control ScriptManager1.
+        /// Control btnAdminUsuarios.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        protected global::System.Web.UI.WebControls.Button btnAdminUsuarios;
 
         /// <summary>
-        /// Control txtFiltro.
+        /// Control btnAdminProductos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFiltro;
+        protected global::System.Web.UI.WebControls.Button btnAdminProductos;
 
         /// <summary>
-        /// Control gvCategoria.
+        /// Control btnAdminCategorias.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvCategoria;
+        protected global::System.Web.UI.WebControls.Button btnAdminCategorias;
 
         /// <summary>
-        /// Control btnAgregar.
+        /// Control btnAdminReportes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAgregar;
+        protected global::System.Web.UI.WebControls.Button btnAdminReportes;
+
+        /// <summary>
+        /// Control btnConfiguracion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnConfiguracion;
     }
 }

@@ -56,5 +56,10 @@ namespace TPFinal_Ecommerce_Grupo14B
             gvUsuarios.DataBind();
 
         }
+
+        protected void btnVolver_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/AdministracionGeneral.aspx");
+        }
     }
 }

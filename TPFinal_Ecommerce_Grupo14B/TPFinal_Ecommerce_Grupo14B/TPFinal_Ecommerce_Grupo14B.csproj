@@ -64,6 +64,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AdministracionGeneral.aspx" />
     <Content Include="AdministrarArticulos.aspx" />
     <Content Include="AdministrarUsuarios.aspx" />
     <Content Include="Carrito.aspx" />
@@ -91,11 +92,18 @@
     <Content Include="Productos.aspx" />
     <Content Include="RecuperarContrasenia.aspx" />
     <Content Include="Registro.aspx" />
-    <Content Include="Reportes.aspx" />
+    <Content Include="AdministrarCategorias.aspx" />
     <Content Include="Styles\StyleSheet.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdministracionGeneral.aspx.cs">
+      <DependentUpon>AdministracionGeneral.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdministracionGeneral.aspx.designer.cs">
+      <DependentUpon>AdministracionGeneral.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AdministrarArticulos.aspx.cs">
       <DependentUpon>AdministrarArticulos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -212,12 +220,12 @@
     <Compile Include="Registro.aspx.designer.cs">
       <DependentUpon>Registro.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Reportes.aspx.cs">
-      <DependentUpon>Reportes.aspx</DependentUpon>
+    <Compile Include="AdministrarCategorias.aspx.cs">
+      <DependentUpon>AdministrarCategorias.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Reportes.aspx.designer.cs">
-      <DependentUpon>Reportes.aspx</DependentUpon>
+    <Compile Include="AdministrarCategorias.aspx.designer.cs">
+      <DependentUpon>AdministrarCategorias.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

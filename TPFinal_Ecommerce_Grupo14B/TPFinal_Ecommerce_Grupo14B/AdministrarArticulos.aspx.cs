@@ -68,5 +68,10 @@ namespace TPFinal_Ecommerce_Grupo14B
             gvArticulos.DataSource = listaFiltrada;
             gvArticulos.DataBind();
         }
+
+        protected void btnVolver_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/AdministracionGeneral.aspx");
+        }
     }
 }

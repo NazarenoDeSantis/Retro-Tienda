@@ -71,7 +71,7 @@ namespace TPFinal_Ecommerce_Grupo14B
                     negocio.agregar(categoria);
                 }
                 
-                Response.Redirect("Reportes.aspx");
+                Response.Redirect("AdministrarCategorias.aspx");
 
 
             }
@@ -85,7 +85,7 @@ namespace TPFinal_Ecommerce_Grupo14B
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Reportes.aspx");
+            Response.Redirect("/AdministrarCategorias.aspx");
         }
 
         protected void btnDeshabilitar_Click(object sender, EventArgs e)
@@ -96,7 +96,7 @@ namespace TPFinal_Ecommerce_Grupo14B
                 if (btnDeshabilitar.Text == "Reactivar")
                 {
                     negocio.ReactivacionLogicaConSP(int.Parse(txtId.Text));
-                    Response.Redirect("/Reportes.aspx");
+                    Response.Redirect("/AdministrarCategorias.aspx");
                 }
                 else
 
@@ -104,7 +104,7 @@ namespace TPFinal_Ecommerce_Grupo14B
                     negocio.bajaLogicaConSP(int.Parse(txtId.Text));
                 }
 
-                Response.Redirect("/Reportes.aspx");
+                Response.Redirect("/AdministrarCategorias.aspx");
 
             }
             catch (Exception ex)

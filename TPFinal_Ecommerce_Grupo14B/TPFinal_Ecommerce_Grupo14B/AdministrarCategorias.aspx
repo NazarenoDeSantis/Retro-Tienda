@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="Reportes.aspx.cs" Inherits="TPFinal_Ecommerce_Grupo14B.Reportes" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="AdministrarCategorias.aspx.cs" Inherits="TPFinal_Ecommerce_Grupo14B.Reportes" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -17,7 +17,7 @@
 
     <asp:UpdatePanel runat="server">
         <ContentTemplate>
-            <asp:GridView ID="gvCategoria" runat="server" DataKeyNames="Id" AutoGenerateColumns="False" CssClass="table table-striped table-bordered table-hover" HeaderStyle-CssClass="table-dark" OnSelectedIndexChanged="gvCategoria_SelectedIndexChanged" >
+            <asp:GridView ID="gvCategoria" runat="server" DataKeyNames="Id" AutoGenerateColumns="False" CssClass="table table-striped table-bordered table-hover" HeaderStyle-CssClass="table-dark" OnSelectedIndexChanged="gvCategoria_SelectedIndexChanged">
                 <Columns>
                     <asp:BoundField DataField="Id" HeaderText="ID" ReadOnly="True" SortExpression="Id" />
                     <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
@@ -29,6 +29,7 @@
     </asp:UpdatePanel>
     <div class="col">
         <asp:Button Text="Agregar" ID="btnAgregar" CssClass="btn btn-primary" OnClick="btnAgregar_Click" runat="server" />
+        <asp:Button Text="Volver" ID="btnVolver" CssClass="btn btn-primary" OnClick="btnVolver_Click" runat="server" />
     </div>
 
 

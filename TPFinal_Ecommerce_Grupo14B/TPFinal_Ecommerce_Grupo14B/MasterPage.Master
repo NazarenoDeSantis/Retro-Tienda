@@ -47,21 +47,12 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link " aria-current="page" href="/Reportes.aspx">Administrar Categorias</a>
-                        </li>
-                        <li class="nav-item">
-                            <asp:LinkButton ID="lnbtnAdminPedidos" runat="server" Visible="true" CssClass="nav-link ">Administrar Pedidos</asp:LinkButton>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " aria-current="page" href="/AdministrarArticulos.aspx">Administar Artículos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " aria-current="page" href="/AdministrarUsuarios.aspx">Administar Usuarios</a>
+                            <a class="nav-link " aria-current="page" href="/AdministracionGeneral.aspx">Administracion General</a>
                         </li>
                     </ul>
                     <div class="d-flex">
                         <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">    
+                            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
                         </div>
                     </div>
                 </div>

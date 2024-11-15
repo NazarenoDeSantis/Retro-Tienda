@@ -31,6 +31,7 @@
         </ContentTemplate>
     </asp:UpdatePanel>
     <div class="col">
-        <asp:Button Text="Agregar" ID="btnAgregar" CssClass="btn btn-primary" OnClick="btnAgregar_Click" runat="server" />
+        <asp:Button Text="Agregar" ID="btnAgregar" CssClass="btn btn-primary" OnClick="btnAgregar_Click" runat="server" />  
+        <asp:Button Text="Volver" ID="btnVolver" CssClass="btn btn-primary" runat="server" OnClick="btnVolver_Click" />
     </div>
 </asp:Content>

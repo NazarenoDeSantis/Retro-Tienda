@@ -66,5 +66,17 @@
     color: #f8f9fa;
 }
 
+/*Estilos para el panel de Administracion*/
+.admin-dashboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.admin-button {
+    margin: 10px;
+    width: 200px
+
 
 

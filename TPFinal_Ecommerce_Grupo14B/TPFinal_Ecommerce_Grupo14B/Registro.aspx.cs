@@ -19,8 +19,7 @@ namespace TPFinal_Ecommerce_Grupo14B
 
         protected void btnRegistro_Click(object sender, EventArgs e)
         {
-            Usuario usuario = new Usuario();
-            negocio.agregarUsuarioConSP(usuario);
+           
 
         }
     }
