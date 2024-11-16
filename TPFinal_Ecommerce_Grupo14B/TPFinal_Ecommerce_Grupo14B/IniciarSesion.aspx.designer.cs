@@ -11,7 +11,7 @@ namespace TPFinal_Ecommerce_Grupo14B
 {
 
 
-    public partial class MiCuenta
+    public partial class IniciarSesion
     {
 
         /// <summary>

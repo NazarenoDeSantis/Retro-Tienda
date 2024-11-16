@@ -56,7 +56,7 @@
                             else
                             { %>
                         <a href="/AdministracionGeneral.aspx" class="btn btn-warning me-2">Panel Admin</a>
-                        <a href="/Logout.aspx" class="btn btn-danger">Cerrar Sesión</a>
+                        <a href="/IniciarSesion.aspx" class="btn btn-danger">Cerrar Sesión</a>
                         <% } %>
                     </div>
 

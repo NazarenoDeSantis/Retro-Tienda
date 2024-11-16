@@ -9,16 +9,24 @@ using System.Web.UI.WebControls;
 
 namespace TPFinal_Ecommerce_Grupo14B
 {
-    public partial class MiCuenta : System.Web.UI.Page
+    public partial class IniciarSesion : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-           /* if(Session["usuario"] == null)
+            /* if(Session["usuario"] == null)
+             {
+                 Session.Add("error", "Debes loguearte para ingresar");
+                 Response.Redirect("Default.aspx", false);
+             }*/
+            if (Request.QueryString["logout"] == "true")
             {
-                Session.Add("error", "Debes loguearte para ingresar");
-                Response.Redirect("Default.aspx", false);
-            }*/
+                Session.Clear();
+                Session.Abandon();
+                Session.RemoveAll();
+                Response.Redirect("~/IniciarSesion.aspx");
+            }
         }
+
 
         protected void btnIniciarSesion_Click(object sender, EventArgs e)
         {
@@ -29,20 +37,20 @@ namespace TPFinal_Ecommerce_Grupo14B
             {
                 usuario.Correo = txtEmail.Text;
                 usuario.Clave = txtPassword.Text;
-             
 
-                if(negocio.loguear(usuario))
+
+                if (negocio.loguear(usuario))
                 {
                     Session.Add("usuario", usuario);
-                    if(usuario.IdRol == 1)
+                    if (usuario.IdRol == 1)
                     {
                         Response.Redirect("Default.aspx");
                     }
-                    else if( usuario.IdRol ==2 )
+                    else if (usuario.IdRol == 2)
                     {
-                        Response.Redirect("AdministrarUsuarios.aspx",false);
+                        Response.Redirect("AdministrarUsuarios.aspx", false);
                     }
-                   
+
                 }
                 else
                 {
