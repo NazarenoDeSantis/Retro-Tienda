@@ -35,7 +35,7 @@
                     <!-- Mensaje -->
                     <div class="mb-3">
                         <label for="mensaje" class="form-label">Descripción de tu idea</label>
-                        <textarea class="form-control" id="mensaje" rows="5" placeholder="Describe tu idea o sugerencia" required></textarea>
+                        <textarea class="form-control" id="txtMensaje" rows="5" placeholder="Describe tu idea o sugerencia" required></textarea>
                     </div>
 
                     <!-- Botón de Enviar -->

@@ -54,7 +54,7 @@
                 </div>
                 <asp:Button Text="Registrarse" runat="server" CssClass="btn btn-primary w-100" ID="btnRegistro" OnClick="btnRegistro_Click" />
                 <div class="mt-3 text-center">
-                    <p>¿Ya tienes una cuenta? <a href="/MiCuenta.aspx">Inicia sesión aquí</a></p>
+                    <p>¿Ya tienes una cuenta? <a href="/IniciarSesion.aspx">Inicia sesión aquí</a></p>
                 </div>
             </div>
         </div>

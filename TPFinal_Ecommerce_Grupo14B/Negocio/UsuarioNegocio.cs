@@ -57,11 +57,12 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("select idUsuario, idRol from Usuarios where correo = @correo AND clave = @clave");
+                datos.setearConsulta("select idUsuario, correo, clave, idRol from Usuarios where correo = @correo AND clave = @clave");
                 datos.setearParametro("@correo", usuario.Correo);
                 datos.setearParametro("@clave", usuario.Clave);
                 datos.ejecutarLectura();
 
+                //para ver si hay un usuario logeado
                if(datos.Lector.Read())
                 {
                     usuario.Id =(int) datos.Lector["idUsuario"];

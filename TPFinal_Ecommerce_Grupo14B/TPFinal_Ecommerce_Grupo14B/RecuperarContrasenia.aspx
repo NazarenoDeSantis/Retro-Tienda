@@ -17,7 +17,7 @@
                     </div>
                     <asp:Button Text="Recuperar contraseña" ID="btnRecuperar" CssClass="btn btn-primary w-100" runat="server" OnClick="btnRecuperar_Click" />
                     <div class="mt-3 text-center">
-                        <a href="/MiCuenta.aspx" class="link-primary">Volver a Mi Cuenta</a>
+                        <a href="/IniciarSesion.aspx" class="link-primary">Volver a Mi Cuenta</a>
                     </div>
 
                 </div>

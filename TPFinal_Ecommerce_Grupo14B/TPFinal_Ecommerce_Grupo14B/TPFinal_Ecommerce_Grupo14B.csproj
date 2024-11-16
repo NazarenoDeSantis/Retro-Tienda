@@ -87,6 +87,7 @@
     <Content Include="Images\wallpapper.jpeg" />
     <Content Include="js\scripts.js" />
     <Content Include="js\sweetAlert.js" />
+    <Content Include="IniciarSesion.aspx" />
     <Content Include="MiCuenta.aspx" />
     <Content Include="Pagos.aspx" />
     <Content Include="Productos.aspx" />
@@ -183,6 +184,13 @@
     </Compile>
     <Compile Include="MasterPage.Master.designer.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>
+    </Compile>
+    <Compile Include="IniciarSesion.aspx.cs">
+      <DependentUpon>IniciarSesion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="IniciarSesion.aspx.designer.cs">
+      <DependentUpon>IniciarSesion.aspx</DependentUpon>
     </Compile>
     <Compile Include="MiCuenta.aspx.cs">
       <DependentUpon>MiCuenta.aspx</DependentUpon>
