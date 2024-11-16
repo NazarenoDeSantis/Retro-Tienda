@@ -61,5 +61,18 @@ namespace TPFinal_Ecommerce_Grupo14B
         {
             Response.Redirect("/AdministracionGeneral.aspx");
         }
+
+        protected void btnAgregar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/FormularioUsuario.aspx");
+        }
+
+        protected void gvUsuarios_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string id = gvUsuarios.SelectedDataKey.Value.ToString();
+
+            Response.Redirect("/FormularioUsuario.aspx?id=" + id);
+
+        }
     }
 }

@@ -25,7 +25,7 @@
                     <asp:BoundField DataField="Stock" HeaderText="Stock" SortExpression="Stock" />
                     <asp:BoundField DataField="CategoriaID" HeaderText="Categoria" SortExpression="Categoria" />
                     <asp:CheckBoxField HeaderText="Activo" DataField="Activo" SortExpression="Activo" />
-                    <asp:CommandField ShowSelectButton="true" SelectText="🎰" HeaderText="Accion" />
+                    <asp:CommandField ShowSelectButton="true" SelectText="✍️" HeaderText="Accion" />
                 </Columns>
             </asp:GridView>
         </ContentTemplate>

@@ -43,16 +43,6 @@ namespace TPFinal_Ecommerce_Grupo14B
             Response.Redirect("/FormularioArticulo.aspx");
         }
 
-        protected void btnEditar_Click(object sender, EventArgs e)
-        {
-
-
-        }
-
-        protected void btnEliminar_Click(object sender, EventArgs e)
-        {
-
-        }
 
         protected void gvArticulos_SelectedIndexChanged(object sender, EventArgs e)
         {

@@ -81,6 +81,88 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+        public void agregar(Usuario usuario)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("INSERT INTO Usuarios (nombre, correo, clave, direccion, telefono, localidad, fecha_nacimiento,idrol, estado) VALUES(@Nombre, @Correo, @Clave, @Direccion, @Telefono, @Localidad, @FechaNacimiento, @IdRol, 1)");
+                datos.setearParametro("@Nombre", usuario.Nombre);
+                datos.setearParametro("@Correo", usuario.Correo);
+                datos.setearParametro("@Clave", usuario.Clave);
+                datos.setearParametro("@Direccion", usuario.Direccion);
+                datos.setearParametro("@Telefono", usuario.Telefono);
+                datos.setearParametro("@Localidad", usuario.Localidad);
+                datos.setearParametro("@FechaNacimiento", usuario.FechaNacimiento);
+                datos.setearParametro("@IdRol", usuario.IdRol);
+
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Error al agregar el usuario: " + ex.Message);
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+        public void modificar(Usuario usuario)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("Update usuarios set nombre = @Nombre, correo = @Correo, clave = @Clave, direccion = @Direccion, telefono = @Telefono, localidad = @Localidad, fecha_Nacimiento = @FechaNacimiento, idRol = @IdRol where idUsuario = @IdUsuario");
+                datos.setearParametro("@Nombre", usuario.Nombre);
+                datos.setearParametro("@Correo", usuario.Correo);
+                datos.setearParametro("@Clave", usuario.Clave);
+                datos.setearParametro("@Direccion", usuario.Direccion);
+                datos.setearParametro("@Telefono", usuario.Telefono);
+                datos.setearParametro("@Localidad", usuario.Localidad);
+                datos.setearParametro("@FechaNacimiento", usuario.FechaNacimiento);
+                datos.setearParametro("@IdRol", usuario.IdRol);
+                datos.setearParametro("@IdUsuario", usuario.Id);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
+        public void bajaLogica(int id)
+        {
+            try
+            {
+                AccesoDatos datos = new AccesoDatos();
+                datos.setearConsulta("update usuarios set estado = 0 where idUsuario = @IdUsuario");
+                datos.setearParametro("@IdUsuario", id);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public void ReactivacionLogica(int id)
+        {
+            try
+            {
+                AccesoDatos datos = new AccesoDatos();
+                datos.setearConsulta("update usuarios set estado = 1 where idUsuario = @IdUsuario");
+                datos.setearParametro("@IdUsuario", id);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 
     

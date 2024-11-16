@@ -52,6 +52,7 @@
     <Compile Include="Imagenes.cs" />
     <Compile Include="Pedido.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TipoRol.cs" />
     <Compile Include="Usuario.cs" />
   </ItemGroup>
   <ItemGroup>
