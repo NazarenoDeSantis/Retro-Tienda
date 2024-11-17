@@ -11,5 +11,6 @@
         public string UrlImagen { get; set; }
         public bool Activo { get; set; }
 
+
     }
 }
