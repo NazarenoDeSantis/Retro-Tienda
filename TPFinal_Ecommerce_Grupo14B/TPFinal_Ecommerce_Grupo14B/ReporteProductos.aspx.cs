@@ -31,7 +31,7 @@ namespace TPFinal_Ecommerce_Grupo14B
         protected void gvPocoStock_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             gvPocoStock.PageIndex = e.NewPageIndex;
-            CargarTotaldeProductos(); // Vuelve a cargar los datos
+            CargarTotaldeProductos(); 
         }
       
 
