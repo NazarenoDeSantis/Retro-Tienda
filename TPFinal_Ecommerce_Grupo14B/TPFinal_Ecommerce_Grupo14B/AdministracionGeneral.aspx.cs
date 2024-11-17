@@ -13,7 +13,18 @@ namespace TPFinal_Ecommerce_Grupo14B
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["idRol"] == null)
+            {
+                Response.Redirect("IniciarSesion.aspx");
+            }
+            int idRol = (int)Session["idRol"];
 
+            if (idRol == 1)
+            {
+                btnAdminUsuarios.Visible = true;
+                btnAdminReportes.Visible = true;
+                btnConfiguracion.Visible = true;
+            }
         }
 
         protected void btnAdminUsuarios_Click(object sender, EventArgs e)

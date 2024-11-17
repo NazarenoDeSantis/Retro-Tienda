@@ -41,14 +41,16 @@ namespace TPFinal_Ecommerce_Grupo14B
 
                 if (negocio.loguear(usuario))
                 {
-                    Session.Add("usuario", usuario);
-                    if (usuario.IdRol == 1)
+                    Session["usuario"] = usuario;
+                    Session["idRol"] = usuario.IdRol;
+
+                    if (usuario.IdRol == 3)
                     {
                         Response.Redirect("Default.aspx");
                     }
-                    else if (usuario.IdRol == 2)
+                    else if (usuario.IdRol == 1 || usuario.IdRol == 2)
                     {
-                        Response.Redirect("AdministrarUsuarios.aspx", false);
+                        Response.Redirect("AdministracionGeneral.aspx", false);
                     }
 
                 }
@@ -62,7 +64,7 @@ namespace TPFinal_Ecommerce_Grupo14B
             catch (Exception ex)
             {
 
-                Session.Add("error", ex);
+                Session.Add("error", ex.Message);
             }
         }
     }

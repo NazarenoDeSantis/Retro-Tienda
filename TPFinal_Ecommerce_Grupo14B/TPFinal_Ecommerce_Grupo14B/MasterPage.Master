@@ -48,16 +48,30 @@
                     </ul>
 
                     <div class="d-flex">
-                        <% if (Session["usuario"] == null)
-                            { %>
-                        <a href="/IniciarSesion.aspx" class="btn btn-outline-light me-2">Iniciar Sesión</a>
-                        <a href="/Registro.aspx" class="btn btn-primary">Registrarse</a>
-                        <% }
+                        <% var usuario = Session["usuario"];
+                            if (usuario == null)
+                            {
+                        %>
+                             <a href="/IniciarSesion.aspx" class="btn btn-outline-light me-2">Iniciar Sesión</a>
+                             <a href="/Registro.aspx" class="btn btn-primary">Registrarse</a>
+                        <% 
+                            }
                             else
-                            { %>
-                        <a href="/AdministracionGeneral.aspx" class="btn btn-warning me-2">Panel Admin</a>
-                        <a href="/IniciarSesion.aspx" class="btn btn-danger">Cerrar Sesión</a>
-                        <% } %>
+                            {
+                                // Verificar si "idRol" existe en la sesión
+                                int idRol = (Session["idRol"] != null) ? (int)Session["idRol"] : 0;
+
+                                if (idRol == 1 || idRol == 2)
+                                {
+                        %>
+                                 <a href="/AdministracionGeneral.aspx" class="btn btn-warning me-2">Panel Admin</a>
+                        <%
+                                }
+                        %>
+                             <a href="/CerrarSesion.aspx" class="btn btn-danger">Cerrar Sesión</a>
+                        <%
+                            }
+                        %>
                     </div>
 
 

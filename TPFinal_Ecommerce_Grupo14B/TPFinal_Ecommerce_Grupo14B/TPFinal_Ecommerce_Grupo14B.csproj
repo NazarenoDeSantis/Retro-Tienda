@@ -70,6 +70,7 @@
     <Content Include="Carrito.aspx" />
     <Content Include="CatalogoIndumentaria.aspx" />
     <Content Include="CatalogoRegaleria.aspx" />
+    <Content Include="CerrarSesion.aspx" />
     <Content Include="Contacto.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="DetallesProducto.aspx" />
@@ -142,6 +143,13 @@
     </Compile>
     <Compile Include="CatalogoRegaleria.aspx.designer.cs">
       <DependentUpon>CatalogoRegaleria.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CerrarSesion.aspx.cs">
+      <DependentUpon>CerrarSesion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CerrarSesion.aspx.designer.cs">
+      <DependentUpon>CerrarSesion.aspx</DependentUpon>
     </Compile>
     <Compile Include="Contacto.aspx.cs">
       <DependentUpon>Contacto.aspx</DependentUpon>

@@ -19,7 +19,7 @@ namespace TPFinal_Ecommerce_Grupo14B
             {
 
                 string id = Request.QueryString["id"] != null ? Request.QueryString["id"].ToString() : "";
-                if (!string.IsNullOrEmpty(id))
+                if (!string.IsNullOrEmpty(id) && !IsPostBack)
                 {
                     Categoria categoria = negocio.listar().Find(x => x.Id == int.Parse(id));
 
