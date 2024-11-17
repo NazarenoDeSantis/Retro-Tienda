@@ -1,6 +1,5 @@
 use Ecommerce_DB
 
-
 CREATE PROCEDURE spListarArticulosPorCategoria 
     @categoria_id INT
 AS

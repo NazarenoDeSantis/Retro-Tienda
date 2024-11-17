@@ -57,7 +57,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("select idUsuario, correo, clave, idRol from Usuarios where correo = @correo AND clave = @clave");
+                datos.setearConsulta("select idUsuario, correo, clave, IdRol from Usuarios where correo = @correo AND clave = @clave");
                 datos.setearParametro("@correo", usuario.Correo);
                 datos.setearParametro("@clave", usuario.Clave);
                 datos.ejecutarLectura();
@@ -66,7 +66,7 @@ namespace Negocio
                if(datos.Lector.Read())
                 {
                     usuario.Id =(int) datos.Lector["idUsuario"];
-                    usuario.IdRol = (int)datos.Lector["idRol"];
+                    usuario.IdRol = (int)datos.Lector["IdRol"];
                     return true;
                 }
                 return false;

@@ -33,7 +33,7 @@ namespace TPFinal_Ecommerce_Grupo14B
 
         protected void btnAdminReportes_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("/Reportes.aspx");
         }
 
         protected void btnConfiguracion_Click(object sender, EventArgs e)
