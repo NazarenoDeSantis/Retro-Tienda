@@ -21,8 +21,21 @@ namespace TPFinal_Ecommerce_Grupo14B
             int totalProductos = reporteNegocio.CantidadArticulos();
             lblTotalProductos.Text = totalProductos.ToString();
             lblCantidaddeClientes.Text = reporteNegocio.CantidadClientes().ToString();
-           lblValorActivosEmpresa.Text = "$" + " " + reporteNegocio.ValorActivosEmpresa().ToString();
+            lblValorActivosEmpresa.Text = "$" + " " + reporteNegocio.ValorActivosEmpresa().ToString();
+            gvPocoStock.DataSource = reporteNegocio.listar();
+            gvPocoStock.DataBind();
+
+     
+            
         }
+        protected void gvPocoStock_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvPocoStock.PageIndex = e.NewPageIndex;
+            CargarTotaldeProductos(); // Vuelve a cargar los datos
+        }
+      
+
+
 
 
     }

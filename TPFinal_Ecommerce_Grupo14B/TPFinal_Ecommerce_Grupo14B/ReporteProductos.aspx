@@ -42,5 +42,56 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-4">
+                <div class="card text-white bg-warning mb-3">
+                    <div class="card-header">Cantidad productos vendidos</div>
+                    <div class="card-body">
+                        <h5>
+                            <asp:Label ID="lblCantidadProductosVendidos" runat="server" Text="10"></asp:Label>
+                        </h5>
+                        <p class="card-text">Total productos vendidos.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-white bg-info mb-3">
+                    <div class="card-header">Total ventas</div>
+                    <div class="card-body">
+                        <h5>
+                            <asp:Label ID="lblValorTotalVentas" runat="server" Text="$ 10"></asp:Label>
+                        </h5>
+                        <p class="card-text">Valor total en pesos de ventas.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-white mb-3" style="background-color:#ff6a00" ">
+                    <div class="card-header">Productos bajo stock</div>
+                    <div class="card-body">
+                        <h5>
+                            <asp:Label ID="lblProductosBajoStock" runat="server" Text="10"></asp:Label>
+                        </h5>
+                        <p class="card-text">Productos con menos de 3 unidades.</p>
+                    </div>
+                </div>
+            </div>
+            <h2>Productos con stock menor a 10</h2>
+            <div class="col col-6">
+    <!-- Contenedor con scroll cuando hay más de 10 filas -->
+    <div style="max-height: 300px; overflow-y: auto;">
+        <asp:GridView 
+            ID="gvPocoStock" 
+            runat="server" 
+            AutoGenerateColumns="False" 
+            CssClass="table table-striped table-bordered">
+            <Columns>
+                <asp:BoundField DataField="Id" HeaderText="ID" ReadOnly="True" SortExpression="Id" />
+                <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
+                <asp:BoundField DataField="Stock" HeaderText="Stock" SortExpression="Stock" />
+            </Columns>
+        </asp:GridView>
+    </div>
+</div>
+
         </div>
 </asp:Content>

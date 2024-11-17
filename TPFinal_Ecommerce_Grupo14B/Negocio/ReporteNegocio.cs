@@ -1,4 +1,5 @@
-﻿using negocio;
+﻿using Dominio;
+using negocio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -63,6 +64,41 @@ namespace Negocio
             }
             catch (Exception ex)
             {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+        public List<Articulo> listar()
+        {
+            List<Articulo> lista = new List<Articulo>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+
+                datos.setearConsulta("select a.idArticulo, a.nombre, a.stock  from Articulos a where stock < 10");
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Articulo aux = new Articulo();
+
+                    aux.Id = (int)datos.Lector["idArticulo"];
+                    aux.Nombre = (string)datos.Lector["nombre"];
+                    aux.Stock = (int)datos.Lector["stock"];
+
+
+                    lista.Add(aux);
+                }
+
+                return lista;
+            }
+            catch (Exception ex)
+            {
+
                 throw ex;
             }
             finally
