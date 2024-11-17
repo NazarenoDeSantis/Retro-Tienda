@@ -104,6 +104,13 @@ create table tipoPedidos(
     nombre varchar(50) not null,
     estado bit default 1
 );
+go
+create table Roles (
+    idRol int primary key,
+    Nombre varchar(255) not null
+);
+
+
 
 
 -- INSERTs para la tabla Usuario
@@ -122,6 +129,12 @@ INSERT INTO Categorias (nombre)
 VALUES ('Indumentaria');
 GO
 
+-- INSERTs para la tabla Roles
+insert into Roles (idRol, Nombre) values (1, 'Admin');
+insert into Roles (idRol, Nombre) values (2, 'Empleado');
+insert into Roles (idRol, Nombre) values (3, 'Usuario');
+
+go
 -- INSERTs para la tabla Articulo
 INSERT INTO [Articulos] ([nombre], [descripcion], [precio], [stock], [categoria_id])
 VALUES
