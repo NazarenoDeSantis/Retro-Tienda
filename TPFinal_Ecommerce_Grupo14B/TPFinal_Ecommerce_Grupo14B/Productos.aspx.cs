@@ -27,12 +27,6 @@ namespace TPFinal_Ecommerce_Grupo14B
 
         }
 
-        protected void btnVerMas_Click(object sender, EventArgs e)
-        {
-            LinkButton btnVerDetalle = (LinkButton)sender;
-            string id = btnVerDetalle.CommandArgument;
-            Response.Redirect("DetallesProducto.aspx?id=" + id);
-        }
 
         protected void btnVerDetalle_Click(object sender, EventArgs e)
         {

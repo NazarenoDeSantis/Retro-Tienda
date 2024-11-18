@@ -3,50 +3,50 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
+    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <div class="container mt-5">
         <h2 class="mb-4">Carrito de Compras</h2>
+        <asp:UpdatePanel runat="server">
+            <ContentTemplate>
+                <asp:GridView ID="gvCarrito" runat="server" AutoGenerateColumns="False" CssClass="table table-striped" OnRowCommand="gvCarrito_RowCommand">
+                    <Columns>
+                        <asp:BoundField DataField="Id" HeaderText="ID" ReadOnly="True" SortExpression="Id" />
+                        <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
+                        <asp:BoundField DataField="Precio" HeaderText="Precio" DataFormatString="{0:C}" />
+                        <asp:TemplateField HeaderText="Cantidad">
+                            <ItemTemplate>
+                                <asp:Label ID="lblCantidad" runat="server" Text='<%# Eval("Cantidad") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Subtotal">
+                            <ItemTemplate>
+                                <asp:Label ID="lblSubtotal" runat="server" Text='<%# Eval("Subtotal", "{0:C}") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Acciones">
+                            <ItemTemplate>
+                                <asp:Button ID="btnAumentar" runat="server" Text="+" CommandName="Aumentar" CommandArgument='<%# Eval("Id") %>' CssClass="btn btn-primary btn-sm" />
 
-        <!-- Tabla de productos en el carrito -->
-        <div class="table-responsive">
-            <table class="table">
-                <thead class="table-light">
-                    <tr>
-                        <th scope="col">Producto</th>
-                        <th scope="col">Precio</th>
-                        <th scope="col">Cantidad</th>
-                        <th scope="col">Subtotal</th>
-                        <th scope="col">Acciones</th>
-                    </tr>
-                </thead>
-                <tbody id="carrito">
+                                <asp:Button ID="btnDisminuir" runat="server" Text="-" CommandName="Disminuir" CommandArgument='<%# Eval("Id") %>' CssClass="btn btn-warning btn-sm" />
 
-                    <tr>
-                        <td>Producto 1</td>
-                        <td>$50.00</td>
-                        <td>
-                            <asp:TextBox runat="server" CssClass="form-control w-50" ID="txtCantidad" />
-                        </td>
-                        <td>$50.00</td>
-                        <td>
-                            <asp:Button Text="Eliminar" CssClass="btn btn-danger btn-sm" ID="btnEliminar" runat="server" OnClick="btnEliminar_Click" />
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+                                <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" CommandName="Eliminar" CommandArgument='<%# Eval("Id") %>' CssClass="btn btn-danger btn-sm" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                    </Columns>
+                </asp:GridView>
+                <!-- Total de la compra -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <asp:Label runat="server" ID="lblTotal" CssClass="h3"></asp:Label>
+                    </div>
+                    <div class="col-md-6 text-end">
 
-        <!-- Total de la compra -->
-        <div class="row">
-            <div class="col-md-6">
-                <h3 id="total">Total: $200.00</h3>
-            </div>
-            <div class="col-md-6 text-end">
-               
-                <asp:Button Text="Seguir Comprando" ID="btnSeguirComprando" CssClass="btn btn-outline-primary" runat="server" OnClick="btnSeguirComprando_Click" />
-                <asp:Button Text="Pagar" CssClass="btn btn-success" ID="btnPagar" runat="server" OnClick="btnPagar_Click" />
-            </div>
-        </div>
+                        <asp:Button Text="Seguir Comprando" ID="btnSeguirComprando" CssClass="btn btn-outline-primary" runat="server" OnClick="btnSeguirComprando_Click" />
+                        <asp:Button Text="Pagar" CssClass="btn btn-success" ID="btnPagar" runat="server" OnClick="btnPagar_Click" />
+                    </div>
+                </div>
+            </ContentTemplate>
+        </asp:UpdatePanel>
     </div>
 
 </asp:Content>
