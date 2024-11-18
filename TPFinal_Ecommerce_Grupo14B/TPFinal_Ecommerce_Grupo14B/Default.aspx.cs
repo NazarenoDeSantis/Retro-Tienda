@@ -31,8 +31,18 @@ namespace TPFinal_Ecommerce_Grupo14B
 
         }
 
-        protected void btnVerMasDestacados_Click(object sender, EventArgs e)
+        protected void btnVerDetalle_Click(object sender, EventArgs e)
         {
+            LinkButton btnVerDetalle = (LinkButton)sender;
+            string id = btnVerDetalle.CommandArgument;
+
+            // Guarda el id en la sesión
+
+            Session.Add("ProductoId", id);
+
+
+            // Redirige a la página de detalles
+            Response.Redirect("DetallesProducto.aspx");
 
         }
     }

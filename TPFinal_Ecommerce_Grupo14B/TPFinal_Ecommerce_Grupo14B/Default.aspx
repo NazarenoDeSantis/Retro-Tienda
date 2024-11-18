@@ -20,7 +20,7 @@
                                         <div class="card-body">
                                             <h5 class="card-title"><%#Eval("Nombre") %></h5>
                                             <p class="card-text"><%#Eval("Descripcion") %></p>
-                                            <asp:Button Text="Ver Más" runat="server" CssClass="btn btn-primary" ID="btnVerMasDestacados" OnClick="btnVerMasDestacados_Click" />
+                                            <asp:LinkButton ID="btnVerDetalle" runat="server" CssClass="btn btn-primary" CommandArgument='<%# Eval("Id") %>' OnClick="btnVerDetalle_Click">Ver Más</asp:LinkButton>
                                             <%--<asp:Button Text="Comprar" runat="server" ID="btnComprarDestacados" CssClass="btn btn-primary" OnClick="btnComprarDestacados_Click" />--%>
                                         </div>
                                     </div>
@@ -39,7 +39,7 @@
                                         <div class="card-body">
                                             <h5 class="card-title"><%#Eval("Nombre") %></h5>
                                             <p class="card-text"><%#Eval("Descripcion") %></p>
-                                            <asp:Button Text="Ver Más" runat="server" CssClass="btn btn-primary" ID="btnVerMasDestacados" OnClick="btnVerMasDestacados_Click" />
+                                            <asp:LinkButton ID="btnVerDetalle" runat="server" CssClass="btn btn-primary" CommandArgument='<%# Eval("Id") %>' OnClick="btnVerDetalle_Click">Ver Más</asp:LinkButton>
                                             <%--<asp:Button Text="Comprar" runat="server" ID="btnComprarDestacados" CssClass="btn btn-primary" OnClick="btnComprarDestacados_Click" />--%>
                                         </div>
                                     </div>
@@ -53,6 +53,7 @@
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
             </button>
+
             <button class="carousel-control-next" type="button" data-bs-target="#productosCarousel" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>

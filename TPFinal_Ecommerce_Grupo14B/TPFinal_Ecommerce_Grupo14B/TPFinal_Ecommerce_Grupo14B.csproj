@@ -101,6 +101,11 @@
     <Content Include="Styles\StyleSheet.css" />
     <Content Include="Web.config" />
   </ItemGroup>
+   <ItemGroup>
+     <None Update="roslyn\\*">
+       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+     </None>
+   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdministracionGeneral.aspx.cs">
       <DependentUpon>AdministracionGeneral.aspx</DependentUpon>

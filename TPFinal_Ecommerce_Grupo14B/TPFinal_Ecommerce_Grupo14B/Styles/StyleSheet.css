@@ -76,8 +76,40 @@
 
 .admin-button {
     margin: 10px;
-    width: 230px;
+    width: 200px;
+}
+.carousel-control-prev {
+    position: absolute;
+    top: 200px;
+    bottom: 300px;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 5%;
+    padding: 0;
+    color: #fff;
+    text-align: center;
+    background: 0 0;
+    border: 0;
+    opacity: .5;
+    transition: opacity .15s ease
 }
 
-
-
+.carousel-control-next {
+    position: absolute;
+    top: 200px;
+    bottom: 300px;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 5%;
+    padding: 0;
+    color: #fff;
+    text-align: center;
+    background: 0 0;
+    border: 0;
+    opacity: .5;
+    transition: opacity .15s ease
+}
