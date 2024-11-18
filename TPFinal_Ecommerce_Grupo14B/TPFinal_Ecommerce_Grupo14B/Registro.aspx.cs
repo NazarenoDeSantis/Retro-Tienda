@@ -19,8 +19,35 @@ namespace TPFinal_Ecommerce_Grupo14B
 
         protected void btnRegistro_Click(object sender, EventArgs e)
         {
-           
 
+            try
+            {
+                Usuario usuario = new Usuario();
+                usuario.Nombre = txtNombre.Text;
+                usuario.Correo = txtEmail.Text;
+                usuario.Clave = txtClave.Text;
+                usuario.Telefono = txtTelefono.Text;
+                usuario.Direccion = txtDireccion.Text;
+                usuario.Localidad = txtLocalidad.Text;
+                usuario.FechaNacimiento = DateTime.Parse(txtFechaNacimiento.Text);
+                usuario.IdRol = 3;
+
+                negocio.agregar(usuario);
+                if (negocio.loguear(usuario))
+                {
+                    Session["usuario"] = usuario;
+                    Session["idRol"] = usuario.IdRol;
+
+                    Response.Redirect("Default.aspx");
+                }
+
+            }
+
+            catch (Exception ex)
+            {
+                Session.Add("Error", ex.Message);
+                throw;
+            }
         }
     }
 }
