@@ -163,6 +163,33 @@ namespace Negocio
                 throw ex;
             }
         }
+
+        public bool ExisteEmail(string email)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("SELECT COUNT(*) FROM Usuarios WHERE correo = @Email AND estado = 1");
+                datos.setearParametro("@Email", email);
+                datos.ejecutarLectura();
+
+                // Verificar si el correo existe
+                if (datos.Lector.Read())
+                {
+                    int count = (int)datos.Lector[0];
+                    return count > 0;
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al verificar el correo electrónico: " + ex.Message);
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
 
     
