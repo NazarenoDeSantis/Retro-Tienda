@@ -38,8 +38,8 @@ namespace TPFinal_Ecommerce_Grupo14B
             }
             catch (Exception ex)
             {
-                Session.Add("Error", ex);
-                throw;
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Error",
+                     $"Swal.fire('Error', 'Hubo un error al cargar los datos: {ex.Message}', 'error');", true);
             }
         }
 
@@ -54,12 +54,21 @@ namespace TPFinal_Ecommerce_Grupo14B
 
                 if (string.IsNullOrEmpty(categoria.Nombre))
                 {
-                    lblError.Visible = true;
-                    lblError.Text = "No puede agregar un nombre Vacio" ;
+                    /* lblError.Visible = true;
+                     lblError.Text = "No puede agregar un nombre Vacio";
+                     return;*/
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "CampoVacio",
+                         "Swal.fire('Error', 'El nombre no puede estar vacío.', 'error');", true);
+                    return;
+                }
+                if (negocio.verificarDuplicado(categoria))
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Duplicado",
+                        "Swal.fire('Advertencia', 'La categoría ya existe.', 'warning');", true);
                     return;
                 }
 
-                negocio.verificarDuplicado(categoria);
+                //negocio.verificarDuplicado(categoria);
                 if (Request.QueryString["id"] != null)
                 {
                     categoria.Id = int.Parse(txtId.Text);
@@ -70,8 +79,10 @@ namespace TPFinal_Ecommerce_Grupo14B
                 {
                     negocio.agregar(categoria);
                 }
-                
-                Response.Redirect("AdministrarCategorias.aspx");
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Success",
+                    "Swal.fire('Éxito', 'Categoría guardada correctamente.', 'success').then(() => { window.location = 'AdministrarCategorias.aspx'; });", true);
+
+                //  Response.Redirect("AdministrarCategorias.aspx");
 
 
             }
@@ -90,30 +101,30 @@ namespace TPFinal_Ecommerce_Grupo14B
 
         protected void btnDeshabilitar_Click(object sender, EventArgs e)
         {
+           
             try
             {
+                string script = string.Empty;
 
                 if (btnDeshabilitar.Text == "Reactivar")
                 {
                     negocio.ReactivacionLogicaConSP(int.Parse(txtId.Text));
-                    Response.Redirect("/AdministrarCategorias.aspx");
+                    script = "Swal.fire('Éxito', 'Categoría reactivada con éxito.', 'success').then((result) => { window.location = '/AdministrarCategorias.aspx'; });";
                 }
                 else
-
                 {
                     negocio.bajaLogicaConSP(int.Parse(txtId.Text));
+                    script = "Swal.fire('Éxito', 'Categoría deshabilitada con éxito.', 'success').then((result) => { window.location = '/AdministrarCategorias.aspx'; });";
                 }
 
-                Response.Redirect("/AdministrarCategorias.aspx");
-
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "DeshabilitarCategoria", script, true);
             }
             catch (Exception ex)
             {
-                Session.Add("Error", ex);
-
-                throw;
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Error",
+                    $"Swal.fire('Error', 'Hubo un problema al realizar la acción: {ex.Message}', 'error');", true);
             }
         }
-    
+
     }
 }

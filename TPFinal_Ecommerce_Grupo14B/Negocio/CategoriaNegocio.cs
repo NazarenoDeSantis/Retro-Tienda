@@ -42,33 +42,55 @@ namespace Negocio
             return lista;
         }
 
-         public void verificarDuplicado(Categoria categoria)
-         {
-             AccesoDatos datos = new AccesoDatos();
-             try
-             {
-                 datos.setearConsulta("SELECT COUNT(*) FROM Categorias WHERE nombre = @nombre");
-                 datos.setearParametro("@nombre", categoria.Nombre);
-                 int cantidad = (int)datos.ejecutarAccionScalar();
+        /*  public void verificarDuplicado(Categoria categoria)
+          {
+              AccesoDatos datos = new AccesoDatos();
+              try
+              {
+                  datos.setearConsulta("SELECT COUNT(*) FROM Categorias WHERE nombre = @nombre");
+                  datos.setearParametro("@nombre", categoria.Nombre);
+                  int cantidad = (int)datos.ejecutarAccionScalar();
 
-                 if (cantidad > 0)
-                 {
-                     throw new Exception($"Ya existe una CATEGORÍAS con nombre '{categoria.Nombre}' en la base de datos.");
+                  if (cantidad > 0)
+                  {
+                      throw new Exception($"Ya existe una CATEGORÍAS con nombre '{categoria.Nombre}' en la base de datos.");
 
-                 }
-             }
-             catch (Exception)
-             {
+                  }
+              }
+              catch (Exception)
+              {
 
-                 throw;
-             }
-             finally
-             {
-                 datos.cerrarConexion();
-             }
-         }
+                  throw;
+              }
+              finally
+              {
+                  datos.cerrarConexion();
+              }
+          }*/
 
-         public void agregar(Categoria categoria)
+        public bool verificarDuplicado(Categoria categoria)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("SELECT COUNT(*) FROM Categorias WHERE nombre = @nombre");
+                datos.setearParametro("@nombre", categoria.Nombre);
+                int cantidad = (int)datos.ejecutarAccionScalar();
+
+                return cantidad > 0; // Retorna true si hay duplicados
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al verificar duplicados: " + ex.Message);
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+
+        public void agregar(Categoria categoria)
          {
              AccesoDatos datos = new AccesoDatos();
 
