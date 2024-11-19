@@ -190,6 +190,32 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+
+        public string RecuperarPass(string email)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("SELECT clave FROM Usuarios WHERE correo = @Email AND estado = 1");
+                datos.setearParametro("@Email", email);
+                datos.ejecutarLectura();
+
+                // Verificar si el correo existe y devolver la contraseña
+                if (datos.Lector.Read())
+                {
+                    return datos.Lector["clave"].ToString(); // Devuelve la contraseña
+                }
+                return null; // Si no existe, retorna null
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al recuperar la contraseña: " + ex.Message);
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
 
     
