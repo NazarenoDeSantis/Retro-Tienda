@@ -64,14 +64,13 @@ namespace TPFinal_Ecommerce_Grupo14B
                 };
 
                 clienteSmtp.Send(mensaje);
-
-                ScriptManager.RegisterStartupScript(this, GetType(), "alert", "Swal.fire({icon: 'warning', title: 'Correo existente', text: 'Se ha enviado un correo con la clave correspondiente.'});", true);
+                ScriptManager.RegisterStartupScript(this, GetType(), "alert", "Swal.fire({icon: 'success', title: 'Correo existente', text: 'Se ha enviado un correo con la clave correspondiente.'});", true);
+               
                 return;
             }
             catch (Exception ex)
             {
-
-                Response.Write($"<script>alert('Error al enviar el correo: {ex.Message}');</script>");
+                ScriptManager.RegisterStartupScript(this, GetType(), "alert", "Swal.fire({icon: 'warning', title: 'Error', text: 'Error al enviar el correo'});", true);
             }
         }
     }

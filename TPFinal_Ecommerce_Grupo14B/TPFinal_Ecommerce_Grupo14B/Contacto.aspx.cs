@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Text.RegularExpressions;
 
 namespace TPFinal_Ecommerce_Grupo14B
 {
@@ -23,16 +24,29 @@ namespace TPFinal_Ecommerce_Grupo14B
         {
             try
             {
-                // Captura los datos del formulario
-                string nombre = txtNombre.Text;
-                string emailCliente = txtEmail.Text;
-                string asunto = txtAsunto.Text;
-                string mensajeCliente = txtMensaje.Text; // Captura el mensaje del textarea
+               
+                string nombre = txtNombre.Text.Trim();
+                string emailCliente = txtEmail.Text.Trim();
+                string asunto = txtAsunto.Text.Trim();
+                string mensajeCliente = txtMensaje.Text.Trim();
 
-                // Crea el mensaje de correo
+               
+                if (string.IsNullOrEmpty(nombre) || string.IsNullOrEmpty(emailCliente) ||
+                    string.IsNullOrEmpty(asunto) || string.IsNullOrEmpty(mensajeCliente))
+                {
+                    throw new Exception("Todos los campos son obligatorios.");
+                }
+
+               
+                if (!Regex.IsMatch(emailCliente, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
+                {
+                    throw new Exception("El correo electrónico no tiene un formato válido.");
+                }
+
+               
                 MailMessage mensaje = new MailMessage();
-                mensaje.From = new MailAddress("ecommerce14bretro@gmail.com"); // Cambia por tu correo
-                mensaje.To.Add("ecommerce14bretro@gmail.com"); // Cambia por el correo donde recibirás los mensajes
+                mensaje.From = new MailAddress("ecommerce14bretro@gmail.com"); 
+                mensaje.To.Add("ecommerce14bretro@gmail.com"); 
                 mensaje.Subject = asunto;
                 mensaje.Body = $"Nombre: {nombre}\nCorreo: {emailCliente}\nMensaje: {mensajeCliente}";
                 mensaje.IsBodyHtml = false;
@@ -42,21 +56,21 @@ namespace TPFinal_Ecommerce_Grupo14B
                 {
                     Host = "smtp.gmail.com",
                     Port = 587,
-                    Credentials = new NetworkCredential("ecommerce14bretro@gmail.com", "lmfw xlpn tkaw iqkx"), // Cambia por tu email y contraseña
+                    Credentials = new NetworkCredential("ecommerce14bretro@gmail.com", "lmfw xlpn tkaw iqkx"), 
                     EnableSsl = true
                 };
 
-                // Envía el correo
+                
                 clienteSmtp.Send(mensaje);
-
-                // Muestra un mensaje de éxito
-                Response.Write("<script>alert('El mensaje se ha enviado correctamente.');</script>");
+                ScriptManager.RegisterStartupScript(this, GetType(), "alert", "Swal.fire({icon: 'success', title: 'Mensaje enviado', text: 'El mensaje se ha enviado exitosamente.'});", true);
+                return;
             }
             catch (Exception ex)
             {
-                // Maneja cualquier error al enviar el correo
-                Response.Write($"<script>alert('Error al enviar el mensaje: {ex.Message}');</script>");
+                
+                ScriptManager.RegisterStartupScript(this, GetType(), "alert", $"Swal.fire({{icon: 'error', title: 'Error', text: '{ex.Message}'}});", true);
             }
+
         }
 
 
