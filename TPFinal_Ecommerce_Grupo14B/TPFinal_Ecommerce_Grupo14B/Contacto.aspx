@@ -35,7 +35,7 @@
                     <!-- Mensaje -->
                     <div class="mb-3">
                         <label for="mensaje" class="form-label">Descripción de tu idea</label>
-                        <textarea class="form-control" id="txtMensaje" rows="5" placeholder="Describe tu idea o sugerencia" required></textarea>
+                        <asp:TextBox runat="server" CssClass="form-control" ID="txtMensaje" TextMode="MultiLine" Rows="5" Placeholder="Describe tu idea o sugerencia"></asp:TextBox>
                     </div>
 
                     <!-- Botón de Enviar -->

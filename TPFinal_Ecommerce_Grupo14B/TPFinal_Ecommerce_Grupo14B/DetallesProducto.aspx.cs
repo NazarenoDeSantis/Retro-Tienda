@@ -37,7 +37,7 @@ namespace TPFinal_Ecommerce_Grupo14B
             ArticuloNegocio negocio = new ArticuloNegocio();
             Articulo articulo = negocio.listarConSP().Find(x => x.Id == Convert.ToInt32(id));
             lblNombre.Text = articulo.Nombre;
-            lblID.Text = "Código Artículo: "+ articulo.Id.ToString();
+            lblID.Text = articulo.Id.ToString();
             lblDescripcion.Text = articulo.Descripcion;
             lblPrecio.Text = articulo.Precio.ToString();
             imgProducto.ImageUrl = articulo.UrlImagen;
