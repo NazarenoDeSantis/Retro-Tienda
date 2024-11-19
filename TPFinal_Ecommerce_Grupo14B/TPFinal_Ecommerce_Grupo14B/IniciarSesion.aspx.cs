@@ -13,11 +13,6 @@ namespace TPFinal_Ecommerce_Grupo14B
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            /* if(Session["usuario"] == null)
-             {
-                 Session.Add("error", "Debes loguearte para ingresar");
-                 Response.Redirect("Default.aspx", false);
-             }*/
             if (Request.QueryString["logout"] == "true")
             {
                 Session.Clear();
@@ -38,34 +33,32 @@ namespace TPFinal_Ecommerce_Grupo14B
                 usuario.Correo = txtEmail.Text;
                 usuario.Clave = txtPassword.Text;
 
-
                 if (negocio.loguear(usuario))
                 {
                     Session["usuario"] = usuario;
                     Session["idRol"] = usuario.IdRol;
 
-                    if (usuario.IdRol == 3)
-                    {
-                        Response.Redirect("Default.aspx");
-                    }
-                    else if (usuario.IdRol == 1 || usuario.IdRol == 2)
-                    {
-                        Response.Redirect("AdministracionGeneral.aspx", false);
-                    }
+                    string mensajeExito = usuario.IdRol == 3
+                        ? "¡Bienvenido! Redirigiendo a la página principal..." : "¡Acceso de administrador exitoso! Redirigiendo al panel...";
 
+                    string redireccion = usuario.IdRol == 3
+                        ? "Default.aspx" : "AdministracionGeneral.aspx";
+
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "SesionExitosa",
+                        $"Swal.fire({{icon: 'success', title: 'Inicio de Sesión', text: '{mensajeExito}'}}).then((result) => {{ window.location.href = '{redireccion}'; }});", true);
                 }
                 else
                 {
-                    Session.Add("error ", "usuario o contraseña incorrecta");
-                    Response.Redirect("Registro.aspx", false);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "ErrorCredenciales",
+                        "Swal.fire({icon: 'error', title: 'Error', text: 'Usuario o contraseña incorrectos.'});", true);
                 }
-
             }
             catch (Exception ex)
             {
-
-                Session.Add("error", ex.Message);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "ErrorInesperado",
+                    $"Swal.fire({{icon: 'error', title: 'Error Inesperado', text: '{ex.Message}'}});", true);
             }
+
         }
     }
 }
