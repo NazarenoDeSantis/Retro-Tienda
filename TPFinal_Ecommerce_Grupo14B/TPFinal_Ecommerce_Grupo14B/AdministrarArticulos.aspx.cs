@@ -14,7 +14,10 @@ namespace TPFinal_Ecommerce_Grupo14B
         ArticuloNegocio negocio = new ArticuloNegocio();
         protected void Page_Load(object sender, EventArgs e)
         {
-         
+            if (Session["idRol"] == null)
+            {
+                Response.Redirect("IniciarSesion.aspx");
+            }
 
             if (!IsPostBack)
             {

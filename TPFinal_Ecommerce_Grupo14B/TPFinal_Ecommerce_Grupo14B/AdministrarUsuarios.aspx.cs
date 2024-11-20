@@ -15,8 +15,14 @@ namespace TPFinal_Ecommerce_Grupo14B
         UsuarioNegocio UsuarioNegocio = new UsuarioNegocio();
         protected void Page_Load(object sender, EventArgs e)
         {
-            CargarUsuarios();
-
+            if (Session["idRol"] == null)
+            {
+                Response.Redirect("IniciarSesion.aspx");
+            }
+            if (!IsPostBack)
+            {
+                CargarUsuarios();
+            }
         }
         //cargar 5 datos de prueba
         public void cargarDatosPrueba()
