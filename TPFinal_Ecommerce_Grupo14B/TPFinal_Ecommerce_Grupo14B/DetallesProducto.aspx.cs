@@ -30,6 +30,7 @@ namespace TPFinal_Ecommerce_Grupo14B
                 {
                     Response.Write("No se encontró el ID del producto en la sesión.");
                 }
+
             }
         }
         public void CargaDetallesProducto(string id)

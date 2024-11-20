@@ -16,6 +16,7 @@ namespace TPFinal_Ecommerce_Grupo14B
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            //TODO: SI ESTAS LOGUEADO COMO USUARIO O EMPLEADO TE DEJA INGRESAR AHI 
             if (Session["idRol"] == null)
             {
                 Response.Redirect("IniciarSesion.aspx");
