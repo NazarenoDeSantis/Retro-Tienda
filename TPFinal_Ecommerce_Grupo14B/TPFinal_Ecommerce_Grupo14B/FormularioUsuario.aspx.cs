@@ -110,19 +110,14 @@ namespace TPFinal_Ecommerce_Grupo14B
                     IdRol = int.Parse(ddlRol.SelectedValue)
                 };
 
-                if (usuario.IdRol == 1) // Administrador
-                {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "ConfirmacionRol",
-                        "Swal.fire({title: '¿Estás seguro?', text: '¿Quieres asignar este usuario como administrador?', icon: 'warning', showCancelButton: true, confirmButtonText: 'Sí', cancelButtonText: 'No'}).then((result) => { if (result.isConfirmed) { document.getElementById('btnAceptar').click(); } });", true);
-                    return; 
-                }
 
                 if (Request.QueryString["id"] != null)
                 {
                     usuario.Id = int.Parse(txtId.Text);
                     negocio.modificar(usuario);
+                    // Mostrar mensaje de éxito
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "ModificacionExitosa",
-                       "Swal.fire({icon: 'success', title: 'Modificación exitosa', text: 'El usuario ha sido modificado correctamente.'}).then((result) => { window.location.href = '/AdministrarUsuarios.aspx'; });", true);
+                        "Swal.fire({icon: 'success', title: 'Modificación exitosa', text: 'El usuario ha sido modificado correctamente.'}).then((result) => { window.location.href = '/AdministrarUsuarios.aspx'; });", true);
                 }
                 else
                 {
