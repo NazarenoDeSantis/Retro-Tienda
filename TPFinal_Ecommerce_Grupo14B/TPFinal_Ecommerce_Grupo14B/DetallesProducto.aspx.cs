@@ -12,25 +12,33 @@ namespace TPFinal_Ecommerce_Grupo14B
 {
     public partial class DetallesProducto : System.Web.UI.Page
     {
-        
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (Session["usuario"] == null)
             {
-                
-                string id = Session["ProductoId"] as string;
-                
 
-                if (!string.IsNullOrEmpty(id))
+                Response.Redirect("IniciarSesion.aspx");
+            }
+            else
+            {
+                if (!IsPostBack)
                 {
-                    
-                    CargaDetallesProducto(id);
-                }
-                else
-                {
-                    Response.Write("No se encontró el ID del producto en la sesión.");
-                }
 
+                    string id = Session["ProductoId"] as string;
+
+
+                    if (!string.IsNullOrEmpty(id))
+                    {
+
+                        CargaDetallesProducto(id);
+                    }
+                    else
+                    {
+                        Response.Write("No se encontró el ID del producto en la sesión.");
+                    }
+
+                }
             }
         }
         public void CargaDetallesProducto(string id)
@@ -45,14 +53,14 @@ namespace TPFinal_Ecommerce_Grupo14B
         }
         protected void btnAgregarCarrito_Click(object sender, EventArgs e)
         {
-            int cantidadSeleccionada = 1;         
-            
+            int cantidadSeleccionada = 1;
+
             Session["CantidadSeleccionada"] = cantidadSeleccionada;
 
-           
+
             Session["ProductoId"] = lblID.Text;
 
-            
+
             Response.Redirect("Carrito.aspx");
 
         }

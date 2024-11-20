@@ -96,6 +96,7 @@ namespace TPFinal_Ecommerce_Grupo14B
                     a.Nombre,
                     a.Precio,
                     Cantidad = diccionarioCantidades[a.Id],
+                    StockMaximo = a.Stock,
                     Subtotal = a.Precio * diccionarioCantidades[a.Id]
                 }).ToList();
 
@@ -110,6 +111,7 @@ namespace TPFinal_Ecommerce_Grupo14B
                 gvCarrito.DataBind();
             }
         }
+
 
         private void CalcularTotal()
         {
@@ -164,14 +166,36 @@ namespace TPFinal_Ecommerce_Grupo14B
         }
         private void AumentarCantidad(int idArticulo)
         {
+            // Obtener el diccionario de cantidades desde la sesión
             Dictionary<int, int> diccionarioCantidades = Session["DiccionarioCantidades"] as Dictionary<int, int>;
+            List<Articulo> listaArticulos = Session["ListaArticulos"] as List<Articulo>;
 
-            if (diccionarioCantidades != null && diccionarioCantidades.ContainsKey(idArticulo))
+            if (diccionarioCantidades != null && listaArticulos != null)
             {
-                diccionarioCantidades[idArticulo]++;
-                Session["DiccionarioCantidades"] = diccionarioCantidades;
-            }
+                // Verificar si el artículo está en el diccionario
+                if (diccionarioCantidades.ContainsKey(idArticulo))
+                {
+                    // Obtener el artículo para obtener el stock máximo
+                    Articulo articulo = listaArticulos.FirstOrDefault(a => a.Id == idArticulo);
 
+                    if (articulo != null)
+                    {
+                        // Verificar si la cantidad actual es menor que el stock máximo
+                        int cantidadActual = diccionarioCantidades[idArticulo];
+                        if (cantidadActual < articulo.Stock)
+                        {
+                            // Incrementar la cantidad solo si no supera el stock máximo
+                            diccionarioCantidades[idArticulo]++;
+                            Session["DiccionarioCantidades"] = diccionarioCantidades;
+                        }
+                        else
+                        {
+                            // Opcional: Mostrar un mensaje si se intenta exceder el stock
+                            Response.Write("No se puede incrementar la cantidad más allá del stock disponible.");
+                        }
+                    }
+                }
+            }
         }
         private void DisminuirCantidad(int idArticulo)
         {

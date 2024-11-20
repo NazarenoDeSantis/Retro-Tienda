@@ -15,7 +15,11 @@
                         <asp:BoundField DataField="Precio" HeaderText="Precio" DataFormatString="{0:C}" />
                         <asp:TemplateField HeaderText="Cantidad">
                             <ItemTemplate>
-                                <asp:Label ID="lblCantidad" runat="server" Text='<%# Eval("Cantidad") %>'></asp:Label>
+                                <asp:Label
+                                    ID="lblCantidad"
+                                    runat="server"
+                                    Text='<%# Eval("Cantidad") + "/" + Eval("StockMaximo") %>'>
+                                </asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Subtotal">
