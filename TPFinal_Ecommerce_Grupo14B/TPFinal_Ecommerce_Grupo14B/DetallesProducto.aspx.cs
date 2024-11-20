@@ -17,13 +17,13 @@ namespace TPFinal_Ecommerce_Grupo14B
         {
             if (!IsPostBack)
             {
-                // Recupera el id desde la sesión
+                
                 string id = Session["ProductoId"] as string;
                 
 
                 if (!string.IsNullOrEmpty(id))
                 {
-                    // Usa el id como necesites, por ejemplo, cargar detalles del producto
+                    
                     CargaDetallesProducto(id);
                 }
                 else
@@ -45,16 +45,14 @@ namespace TPFinal_Ecommerce_Grupo14B
         }
         protected void btnAgregarCarrito_Click(object sender, EventArgs e)
         {
-            // Recuperar la cantidad desde el TextBox
-            int cantidadSeleccionada = Convert.ToInt32(txtCantidad.Text);
-
-            // Guardar en la sesión
+            int cantidadSeleccionada = 1;         
+            
             Session["CantidadSeleccionada"] = cantidadSeleccionada;
 
-            // Guardar el ID del producto en la sesión
+           
             Session["ProductoId"] = lblID.Text;
 
-            // Redirigir al carrito
+            
             Response.Redirect("Carrito.aspx");
 
         }

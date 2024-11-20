@@ -26,8 +26,6 @@
                     <asp:Label ID="lblPrecio" CssClass="product-price" runat="server" Text='<%# "Precio: $" + Eval("Precio") %>'></asp:Label>
                 </div>
                 <div class="mt-4">
-                    <label for="cantidad" class="form-label">Cantidad</label>
-                    <asp:TextBox runat="server" ID="txtCantidad" CssClass="form-control w-50" />
                     <asp:Button Text="Agregar al Carrito" runat="server" ID="btnAgregarCarrito" CssClass="btn btn-primary mt-3 w-100" OnClick="btnAgregarCarrito_Click" CommandArgument='<%# Eval("Id") %>' CommandName="ArticuloId" />
                 </div>
                 <div class="mt-4">
