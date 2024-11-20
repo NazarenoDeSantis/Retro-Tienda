@@ -15,7 +15,7 @@ namespace TPFinal_Ecommerce_Grupo14B
         protected void Page_Load(object sender, EventArgs e)
         {
             txtId.Enabled = false;
-            //config inicial
+           
             try
             {
                 if (!IsPostBack)
@@ -64,32 +64,72 @@ namespace TPFinal_Ecommerce_Grupo14B
 
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
+           
             try
             {
-                Usuario usuario = new Usuario();
-                usuario.Nombre = txtNombre.Text;
-                usuario.Correo = txtCorreo.Text;
-                usuario.Clave = txtClave.Text;
-                usuario.Telefono = txtTelefono.Text;
-                usuario.Direccion = txtDireccion.Text;
-                usuario.Localidad = txtLocalidad.Text;
-                usuario.FechaNacimiento = DateTime.Parse(txtFechaNacimiento.Text);
-                usuario.IdRol = int.Parse(ddlRol.SelectedValue);
+                if (string.IsNullOrWhiteSpace(txtNombre.Text) || string.IsNullOrWhiteSpace(txtCorreo.Text) ||
+                    string.IsNullOrWhiteSpace(txtClave.Text) || string.IsNullOrWhiteSpace(txtTelefono.Text) ||
+                    string.IsNullOrWhiteSpace(txtDireccion.Text) || string.IsNullOrWhiteSpace(txtLocalidad.Text) ||
+                    string.IsNullOrWhiteSpace(txtFechaNacimiento.Text))
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "CamposVacios",
+                        "Swal.fire({icon: 'error', title: 'Campos vacíos', text: 'Por favor, complete todos los campos.'});", true);
+                    return;
+                }
+
+                if (negocio.listar().Any(u => u.Correo == txtCorreo.Text && (Request.QueryString["id"] == null || u.Id != int.Parse(txtId.Text))))
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "CorreoDuplicado",
+                        "Swal.fire({icon: 'error', title: 'Correo duplicado', text: 'Este correo ya está registrado.'});", true);
+                    return;
+                }
+
+                DateTime fechaNacimiento;
+                if (!DateTime.TryParse(txtFechaNacimiento.Text, out fechaNacimiento))
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "FechaInvalida",
+                        "Swal.fire({icon: 'error', title: 'Fecha inválida', text: 'Por favor, ingrese una fecha de nacimiento válida.'});", true);
+                    return;
+                }
+
+                if (!long.TryParse(txtTelefono.Text, out _))
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "alert", "Swal.fire({icon: 'error', title: 'Teléfono inválido', text: 'El teléfono solo debe contener números.'});", true);
+                    return;
+                }
+
+                Usuario usuario = new Usuario
+                {
+                    Nombre = txtNombre.Text,
+                    Correo = txtCorreo.Text,
+                    Clave = txtClave.Text,
+                    Telefono = txtTelefono.Text,
+                    Direccion = txtDireccion.Text,
+                    Localidad = txtLocalidad.Text,
+                    FechaNacimiento = fechaNacimiento,
+                    IdRol = int.Parse(ddlRol.SelectedValue)
+                };
+
+                if (usuario.IdRol == 1) // Administrador
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "ConfirmacionRol",
+                        "Swal.fire({title: '¿Estás seguro?', text: '¿Quieres asignar este usuario como administrador?', icon: 'warning', showCancelButton: true, confirmButtonText: 'Sí', cancelButtonText: 'No'}).then((result) => { if (result.isConfirmed) { document.getElementById('btnAceptar').click(); } });", true);
+                    return; 
+                }
 
                 if (Request.QueryString["id"] != null)
                 {
                     usuario.Id = int.Parse(txtId.Text);
                     negocio.modificar(usuario);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "ModificacionExitosa",
+                       "Swal.fire({icon: 'success', title: 'Modificación exitosa', text: 'El usuario ha sido modificado correctamente.'}).then((result) => { window.location.href = '/AdministrarUsuarios.aspx'; });", true);
                 }
                 else
                 {
                     negocio.agregar(usuario);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "AgregadoExitosa",
+                       "Swal.fire({icon: 'success', title: 'Usuario agregado', text: 'El usuario ha sido agregado correctamente.'}).then((result) => { window.location.href = '/AdministrarUsuarios.aspx'; });", true);
                 }
-
-
-                
-
-                Response.Redirect("/AdministrarUsuarios.aspx");
 
             }
             catch (Exception ex)
