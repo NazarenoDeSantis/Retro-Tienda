@@ -71,21 +71,47 @@ namespace TPFinal_Ecommerce_Grupo14B
         {
             try
             {
+                if (string.IsNullOrWhiteSpace(txtNombre.Text) || string.IsNullOrWhiteSpace(txtDescripcion.Text) ||
+                   string.IsNullOrWhiteSpace(txtPrecio.Text) || string.IsNullOrWhiteSpace(txtStock.Text) ||
+                   string.IsNullOrWhiteSpace(txtImagenUrl.Text))
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "CamposVacios",
+                        "Swal.fire({icon: 'error', title: 'Campos vacíos', text: 'Por favor, complete todos los campos.'});", true);
+                    return;
+                }
+
+                decimal precio;
+                if (!decimal.TryParse(txtPrecio.Text, out precio) || precio <= 0)
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "PrecioInvalido",
+                        "Swal.fire({icon: 'error', title: 'Precio inválido', text: 'El precio debe ser mayor a 0.'});", true);
+                    return;
+                }
+
+                int stock;
+                if (!int.TryParse(txtStock.Text, out stock) || stock < 0)
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "StockInvalido",
+                        "Swal.fire({icon: 'error', title: 'Stock inválido', text: 'El stock debe ser mayor o igual a 0.'});", true);
+                    return;
+                }
+
                 Articulo articulo = new Articulo();
                 articulo.Nombre = txtNombre.Text;
                 articulo.Descripcion = txtDescripcion.Text;
-                articulo.Precio = decimal.Parse(txtPrecio.Text);
-                articulo.Stock = int.Parse(txtStock.Text);
+                articulo.Precio = precio;
+                articulo.Stock = stock;
                 articulo.CategoriaId = int.Parse(ddlCategoria.SelectedValue);
                 articulo.UrlImagen = txtImagenUrl.Text;
 
                 if (Request.QueryString["id"] != null)
                 {
-                    articulo.Id = int.Parse(txtId.Text);
+                    articulo.Id = int.Parse(txtId.Text); 
                     negocio.modificarConSP(articulo);
+            
                 }
                 else
-                {
+                {        
                     negocio.agregarConSP(articulo);
                 }
 
