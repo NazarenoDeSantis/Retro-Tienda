@@ -32,26 +32,35 @@ namespace TPFinal_Ecommerce_Grupo14B
             {
                 usuario.Correo = txtEmail.Text;
                 usuario.Clave = txtPassword.Text;
-
+                usuario.Estado = negocio.ExisteEmail(txtEmail.Text);
                 if (negocio.loguear(usuario))
                 {
-                    Session["usuario"] = usuario;
-                    Session["idRol"] = usuario.IdRol;
+                    if (!usuario.Estado)
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "UsuarioInactivo",
+                            "Swal.fire({icon: 'warning', title: 'Usuario Inactivo', text: 'Tu usuario está inactivo.'});", true);
+                    }
+                    else
+                    {
+                        Session["usuario"] = usuario;
+                        Session["idRol"] = usuario.IdRol;
 
-                    string mensajeExito = usuario.IdRol == 3
-                        ? "¡Bienvenido! Redirigiendo a la página principal..." : "¡Acceso de administrador exitoso! Redirigiendo al panel...";
+                        string mensajeExito = usuario.IdRol == 3
+                            ? "¡Bienvenido! Redirigiendo a la página principal..." : "¡Acceso de administrador exitoso! Redirigiendo al panel...";
 
-                    string redireccion = usuario.IdRol == 3
-                        ? "Default.aspx" : "AdministracionGeneral.aspx";
+                        string redireccion = usuario.IdRol == 3
+                            ? "Default.aspx" : "AdministracionGeneral.aspx";
 
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "SesionExitosa",
-                        $"Swal.fire({{icon: 'success', title: 'Inicio de Sesión', text: '{mensajeExito}'}}).then((result) => {{ window.location.href = '{redireccion}'; }});", true);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "SesionExitosa",
+                            $"Swal.fire({{icon: 'success', title: 'Inicio de Sesión', text: '{mensajeExito}'}}).then((result) => {{ window.location.href = '{redireccion}'; }});", true);
+                    }
                 }
                 else
                 {
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "ErrorCredenciales",
                         "Swal.fire({icon: 'error', title: 'Error', text: 'Usuario o contraseña incorrectos.'});", true);
                 }
+
             }
             catch (Exception ex)
             {
