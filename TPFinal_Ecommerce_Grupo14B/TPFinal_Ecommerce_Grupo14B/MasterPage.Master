@@ -78,6 +78,12 @@
                                  <a href="/AdministracionGeneral.aspx" class="btn btn-warning me-2">Panel Empleado</a>
                         <%
                                 }
+                                else if(idRol == 3)
+                                {
+                        %>
+                                  <a href="/Pedidos.aspx" class="btn btn-warning me-2">Ver Pedidos</a>
+                        <%
+                                }
 
                         %>
                              <a href="/CerrarSesion.aspx" class="btn btn-danger">Cerrar Sesión</a>

@@ -68,7 +68,7 @@ namespace TPFinal_Ecommerce_Grupo14B
             pedido.CarritoId = idCarrito;
             pedido.Total = subtotal;
             pedido.FechaPedido = fecha;
-            pedido.Estado = 2;
+            pedido.Estado = 1;
             pedido.DireccionEnvio = "";
 
             pedidoNegocio.InstertarPedido(pedido);

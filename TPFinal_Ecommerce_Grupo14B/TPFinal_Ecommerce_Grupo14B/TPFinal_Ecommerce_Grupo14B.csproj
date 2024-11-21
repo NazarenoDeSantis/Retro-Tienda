@@ -92,6 +92,7 @@
     <Content Include="IniciarSesion.aspx" />
     <Content Include="MiCuenta.aspx" />
     <Content Include="Pagos.aspx" />
+    <Content Include="Pedidos.aspx" />
     <Content Include="Productos.aspx" />
     <Content Include="RecuperarContrasenia.aspx" />
     <Content Include="Registro.aspx" />
@@ -101,11 +102,11 @@
     <Content Include="Styles\StyleSheet.css" />
     <Content Include="Web.config" />
   </ItemGroup>
-   <ItemGroup>
-     <None Update="roslyn\\*">
-       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-     </None>
-   </ItemGroup>
+  <ItemGroup>
+    <None Update="roslyn\\*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
   <ItemGroup>
     <Compile Include="AdministracionGeneral.aspx.cs">
       <DependentUpon>AdministracionGeneral.aspx</DependentUpon>
@@ -228,6 +229,13 @@
     </Compile>
     <Compile Include="Pagos.aspx.designer.cs">
       <DependentUpon>Pagos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pedidos.aspx.cs">
+      <DependentUpon>Pedidos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pedidos.aspx.designer.cs">
+      <DependentUpon>Pedidos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Productos.aspx.cs">
       <DependentUpon>Productos.aspx</DependentUpon>
