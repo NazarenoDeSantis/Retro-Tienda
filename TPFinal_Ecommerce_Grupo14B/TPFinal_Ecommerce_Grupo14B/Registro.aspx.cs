@@ -12,6 +12,7 @@ namespace TPFinal_Ecommerce_Grupo14B
     public partial class Registro : System.Web.UI.Page
     {
         UsuarioNegocio negocio = new UsuarioNegocio();
+        CarritoNegocio carritoNegocio = new CarritoNegocio();
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -80,6 +81,7 @@ namespace TPFinal_Ecommerce_Grupo14B
 
                     // Mensaje de éxito y redirección
                     ScriptManager.RegisterStartupScript(this, GetType(), "alert", "Swal.fire({icon: 'success', title: 'Registro exitoso', text: '¡Bienvenido!', showConfirmButton: false, timer: 1500}).then(() => { window.location.href = 'Default.aspx'; });", true);
+                    carritoNegocio.agregarCarrito(usuario.Id);
                 }
             }
             catch (Exception ex)
