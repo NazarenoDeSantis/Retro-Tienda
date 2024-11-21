@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Dominio;
+using Negocio;
 
 
 namespace TPFinal_Ecommerce_Grupo14B
@@ -15,10 +16,8 @@ namespace TPFinal_Ecommerce_Grupo14B
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            CargarPedido();
 
-            CargarPedidosDePrueba();
-            gvPedidos.DataSource = pedidos;
-            gvPedidos.DataBind();
 
         }
 
@@ -32,6 +31,24 @@ namespace TPFinal_Ecommerce_Grupo14B
             Pedido pedido2 = new Pedido(3, 1, 3, 3000, DateTime.Now, 1, "En preparacion", "sANTA RITA");
             pedidos.Add(pedido2);
 
+
+        }
+        /*public int Id { get; set; }
+        public int UsuarioId { get; set; }
+        public int CarritoId { get; set; }
+        public decimal Total { get; set; }
+        public DateTime FechaPedido { get; set; }
+        public int Estado { get; set; }
+        public string NameStatus { get; set; }
+        public string DireccionEnvio { get; set; }*/
+        //cargar pedido con un join a la tabla tipoPedidos
+        public void CargarPedido()
+        {
+           
+            PedidoNegocio pedidoNegocio = new PedidoNegocio();
+            pedidos = pedidoNegocio.TraerPedido(9);
+            gvPedidos.DataSource = pedidos;
+            gvPedidos.DataBind();
 
         }
     }
