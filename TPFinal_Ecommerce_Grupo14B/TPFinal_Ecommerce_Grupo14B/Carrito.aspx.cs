@@ -100,6 +100,10 @@ namespace TPFinal_Ecommerce_Grupo14B
                     Subtotal = a.Precio * diccionarioCantidades[a.Id]
                 }).ToList();
 
+
+                decimal subtotalGeneral = carrito.Sum(item => item.Subtotal);
+                Session["Subtotal"] = subtotalGeneral;
+
                 // Enlazar al GridView
                 gvCarrito.DataSource = carrito;
                 gvCarrito.DataBind();
@@ -138,6 +142,8 @@ namespace TPFinal_Ecommerce_Grupo14B
 
         protected void btnPagar_Click(object sender, EventArgs e)
         {
+            Usuario usuario = (Usuario)Session["usuario"];            
+            Session["usuarioActual"] = usuario;
             Response.Redirect("Pagos.aspx");
         }
         protected void gvCarrito_RowCommand(object sender, GridViewCommandEventArgs e)

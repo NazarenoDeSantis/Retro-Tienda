@@ -12,8 +12,8 @@ namespace Dominio
         public int UsuarioId { get; set; }         
         public int CarritoId { get; set; }         
         public decimal Total { get; set; }         
-        public DateTime FechaPedido { get; set; }  
-        public string Estado { get; set; }         
+        public DateTime FechaPedido { get; set; }
+        public int Estado { get; set; }         
         public string DireccionEnvio { get; set; } 
     }
 }

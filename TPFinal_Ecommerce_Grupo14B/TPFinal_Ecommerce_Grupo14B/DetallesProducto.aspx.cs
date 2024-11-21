@@ -22,6 +22,7 @@ namespace TPFinal_Ecommerce_Grupo14B
             }
             else
             {
+
                 if (!IsPostBack)
                 {
 
@@ -53,6 +54,8 @@ namespace TPFinal_Ecommerce_Grupo14B
         }
         protected void btnAgregarCarrito_Click(object sender, EventArgs e)
         {
+
+
             int cantidadSeleccionada = 1;
 
             Session["CantidadSeleccionada"] = cantidadSeleccionada;

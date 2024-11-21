@@ -81,11 +81,10 @@
                     <input type="text" class="form-control" id="codigoPostal" placeholder="Ingrese su código postal">
                 </div>
             </div>
-
             <!-- Botones-->
             <div class="form-section">
-                <button type="submit" class="btn btn-primary">Confirmar Pago</button>
-                <a href="carrito.html" class="btn btn-secondary">Volver al Carrito</a>
+                <asp:Button ID="btnConfirmarPago" runat="server" Text="Confirmar Pago" CssClass="btn btn-primary" OnClick="ConfirmPago_Click" />
+                <a href="Carrito.aspx" class="btn btn-secondary">Volver al Carrito</a>
             </div>
         </div>
     </div>
