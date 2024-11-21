@@ -217,6 +217,45 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+
+        public Usuario BuscarUsuarioPorId(int Id)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("SELECT idUsuario, nombre, correo, clave, direccion, telefono, localidad, fecha_nacimiento, estado, IdRol FROM Usuarios WHERE idUsuario = @IdUsuario");
+                datos.setearParametro("@IdUsuario", Id);
+                datos.ejecutarLectura();
+
+                if (datos.Lector.Read())
+                {
+                    Usuario usuario = new Usuario
+                    {
+                        Id = (int)datos.Lector["idUsuario"],
+                        Nombre = (string)datos.Lector["nombre"],
+                        Correo = (string)datos.Lector["correo"],
+                        Clave = (string)datos.Lector["clave"],
+                        Direccion = (string)datos.Lector["direccion"],
+                        Telefono = (string)datos.Lector["telefono"],
+                        Localidad = (string)datos.Lector["localidad"],
+                        FechaNacimiento = (DateTime)datos.Lector["fecha_nacimiento"],
+                        Estado = (bool)datos.Lector["estado"],
+                        IdRol = (int)datos.Lector["IdRol"]
+                    };
+                    return usuario;
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al buscar el usuario: " + ex.Message);
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
     }
 
 }

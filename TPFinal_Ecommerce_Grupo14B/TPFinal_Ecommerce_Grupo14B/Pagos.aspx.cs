@@ -13,6 +13,7 @@ namespace TPFinal_Ecommerce_Grupo14B
     public partial class Pagos : System.Web.UI.Page
     {
         PedidoNegocio pedidoNegocio = new PedidoNegocio();
+        UsuarioNegocio usuarionegocio = new UsuarioNegocio();
         protected void Page_Load(object sender, EventArgs e)
         {
             TraerUsuario();
@@ -64,12 +65,14 @@ namespace TPFinal_Ecommerce_Grupo14B
 
             // Ejemplo: Mostrar datos del pedido
 
+            
+            usuario.Direccion = usuarionegocio.BuscarUsuarioPorId(idUsuario).Direccion;
             pedido.UsuarioId = idUsuario;
             pedido.CarritoId = idCarrito;
             pedido.Total = subtotal;
             pedido.FechaPedido = fecha;
-            pedido.Estado = 1;
-            pedido.DireccionEnvio = "";
+            pedido.Estado = 1;            
+            pedido.DireccionEnvio = usuario.Direccion;
 
             pedidoNegocio.InstertarPedido(pedido);
 

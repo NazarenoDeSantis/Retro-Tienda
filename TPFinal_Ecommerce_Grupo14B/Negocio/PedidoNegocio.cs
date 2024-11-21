@@ -24,7 +24,7 @@ namespace Negocio
                 datos.setearParametro("@total", pedido.Total);
                 datos.setearParametro("@fecha_pedido", DateTime.Now);
                 datos.setearParametro("@idTipoPedido", pedido.Estado);
-                datos.setearParametro("@direccion_envio", "s/d");
+                datos.setearParametro("@direccion_envio", pedido.DireccionEnvio);
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
