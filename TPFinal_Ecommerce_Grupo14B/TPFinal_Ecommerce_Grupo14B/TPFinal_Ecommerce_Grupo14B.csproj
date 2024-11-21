@@ -66,6 +66,7 @@
   <ItemGroup>
     <Content Include="AdministracionGeneral.aspx" />
     <Content Include="AdministrarArticulos.aspx" />
+    <Content Include="AdministrarPedidos.aspx" />
     <Content Include="AdministrarUsuarios.aspx" />
     <Content Include="Carrito.aspx" />
     <Content Include="CatalogoIndumentaria.aspx" />
@@ -121,6 +122,13 @@
     </Compile>
     <Compile Include="AdministrarArticulos.aspx.designer.cs">
       <DependentUpon>AdministrarArticulos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdministrarPedidos.aspx.cs">
+      <DependentUpon>AdministrarPedidos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdministrarPedidos.aspx.designer.cs">
+      <DependentUpon>AdministrarPedidos.aspx</DependentUpon>
     </Compile>
     <Compile Include="AdministrarUsuarios.aspx.cs">
       <DependentUpon>AdministrarUsuarios.aspx</DependentUpon>

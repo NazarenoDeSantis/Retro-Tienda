@@ -9,6 +9,7 @@
         <asp:Button Text="Administrar Usuarios" CssClass="btn btn-primary admin-button" ID="btnAdminUsuarios" OnClick="btnAdminUsuarios_Click" runat="server" Visible="false" />
         <asp:Button Text="Administrar Productos" CssClass="btn btn-primary admin-button" ID="btnAdminProductos" OnClick="btnAdminProductos_Click"  runat="server" />
         <asp:Button Text="Administrar Categorías" CssClass="btn btn-primary admin-button" ID="btnAdminCategorias" OnClick="btnAdminCategorias_Click"  runat="server" />
+        <asp:Button Text="Administrar Pedidos" CssClass="btn btn-primary admin-button" ID="btnAdminPedidos" OnClick="btnAdminPedidos_Click"  runat="server" />
         <asp:Button Text="Ver Reportes" CssClass="btn btn-primary admin-button" ID="btnAdminReportes" OnClick="btnAdminReportes_Click"  runat="server" Visible="false" />
         <asp:Button Text="Configuración" CssClass="btn btn-primary admin-button" ID="btnConfiguracion" OnClick="btnConfiguracion_Click"  runat="server" Visible="false" />
     </div>

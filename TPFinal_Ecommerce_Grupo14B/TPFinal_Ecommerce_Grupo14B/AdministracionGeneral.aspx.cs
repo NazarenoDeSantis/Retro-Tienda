@@ -51,5 +51,10 @@ namespace TPFinal_Ecommerce_Grupo14B
         {
 
         }
+
+        protected void btnAdminPedidos_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/AdministrarPedidos.aspx");
+        }
     }
 }

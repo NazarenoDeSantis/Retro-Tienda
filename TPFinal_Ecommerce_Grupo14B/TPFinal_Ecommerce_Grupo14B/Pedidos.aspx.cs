@@ -14,6 +14,8 @@ namespace TPFinal_Ecommerce_Grupo14B
     {
         List <Pedido> pedidos = new List <Pedido>();
 
+        //traer la session del usuario
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             CargarPedido();
@@ -44,9 +46,9 @@ namespace TPFinal_Ecommerce_Grupo14B
         //cargar pedido con un join a la tabla tipoPedidos
         public void CargarPedido()
         {
-           
+            Usuario usuario = (Usuario)Session["usuario"];
             PedidoNegocio pedidoNegocio = new PedidoNegocio();
-            pedidos = pedidoNegocio.TraerPedido(9);
+            pedidos = pedidoNegocio.TraerPedido(usuario.Id);
             gvPedidos.DataSource = pedidos;
             gvPedidos.DataBind();
 
